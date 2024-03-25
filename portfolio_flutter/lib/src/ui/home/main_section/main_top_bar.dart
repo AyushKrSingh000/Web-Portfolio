@@ -10,6 +10,7 @@ class MainTopBar extends ConsumerStatefulWidget {
 }
 
 class _MainTopBarState extends ConsumerState<MainTopBar> {
+  final ScrollController _scrollController = ScrollController();
   @override
   Widget build(BuildContext context) {
     final pages = ref.watch(homePageProvider.select((value) => value.pages));
@@ -17,65 +18,72 @@ class _MainTopBarState extends ConsumerState<MainTopBar> {
         ref.watch(homePageProvider.select((value) => value.selectedPage));
     return SizedBox(
       height: 40,
-      child: Row(
-        children: pages
-            .map(
-              (e) => InkWell(
-                onTap: () {
-                  ref.read(homePageProvider.notifier).addPage(e);
-                },
-                child: Container(
-                  height: 40,
-                  decoration: BoxDecoration(
-                    color: pageId == e.pageId
-                        ? Colors.white.withOpacity(0.2)
-                        : Colors.black,
-                    border: Border(
-                      right: BorderSide(
-                        width: 0.5,
-                        color: Colors.white.withOpacity(0.5),
-                      ),
-                      bottom: BorderSide(
-                        width: 0.5,
-                        color: Colors.white.withOpacity(0.5),
-                      ),
-                    ),
-                  ),
-                  child: Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 10),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Image.asset(
-                          e.pageIcon,
-                          width: 14,
-                        ),
-                        const SizedBox(
-                          width: 10,
-                        ),
-                        Text(e.pageName),
-                        const SizedBox(
-                          width: 15,
-                        ),
-                        InkWell(
-                          onTap: () {
-                            ref
-                                .read(homePageProvider.notifier)
-                                .removePage(e.pageId);
-                          },
-                          child: Icon(
-                            Icons.close,
-                            size: 18,
-                            color: Colors.white.withOpacity(0.6),
+      child: RawScrollbar(
+        controller: _scrollController,
+        child: SingleChildScrollView(
+          controller: _scrollController,
+          scrollDirection: Axis.horizontal,
+          child: Row(
+            children: pages
+                .map(
+                  (e) => InkWell(
+                    onTap: () {
+                      ref.read(homePageProvider.notifier).addPage(e);
+                    },
+                    child: Container(
+                      height: 40,
+                      decoration: BoxDecoration(
+                        color: pageId == e.pageId
+                            ? Colors.white.withOpacity(0.2)
+                            : Colors.black,
+                        border: Border(
+                          right: BorderSide(
+                            width: 0.5,
+                            color: Colors.white.withOpacity(0.5),
+                          ),
+                          bottom: BorderSide(
+                            width: 0.5,
+                            color: Colors.white.withOpacity(0.5),
                           ),
                         ),
-                      ],
+                      ),
+                      child: Padding(
+                        padding: const EdgeInsets.symmetric(horizontal: 10),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Image.asset(
+                              e.pageIcon,
+                              width: 14,
+                            ),
+                            const SizedBox(
+                              width: 10,
+                            ),
+                            Text(e.pageName),
+                            const SizedBox(
+                              width: 15,
+                            ),
+                            InkWell(
+                              onTap: () {
+                                ref
+                                    .read(homePageProvider.notifier)
+                                    .removePage(e.pageId);
+                              },
+                              child: Icon(
+                                Icons.close,
+                                size: 18,
+                                color: Colors.white.withOpacity(0.6),
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
                     ),
                   ),
-                ),
-              ),
-            )
-            .toList(),
+                )
+                .toList(),
+          ),
+        ),
       ),
     );
   }
