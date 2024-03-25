@@ -3,6 +3,8 @@ import 'package:auto_route/annotations.dart';
 import 'package:flutter/material.dart';
 
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:portfolio_flutter/src/ui/home/home_page_model.dart';
+import 'package:portfolio_flutter/src/ui/home/main_section/main_section.dart';
 import '../../constants/colors.dart';
 import 'widgets/bottom_bar.dart';
 import 'widgets/explorer_section.dart';
@@ -27,6 +29,7 @@ class _HomePageState extends ConsumerState<HomePage> {
 
   @override
   Widget build(BuildContext context) {
+    ref.listen(homePageProvider, (previous, next) {});
     return SafeArea(
         child: Scaffold(
       backgroundColor: ColorUtils.getColor(context, scaffoldColor),
@@ -39,6 +42,7 @@ class _HomePageState extends ConsumerState<HomePage> {
               children: [
                 CustomSideBar(),
                 ExplorerSection(),
+                Expanded(child: MainSection()),
               ],
             ),
           ),

@@ -1,5 +1,5 @@
 import 'package:auto_route/auto_route.dart';
-import '../ui/home/home_screen.dart';
+import '../ui/home/home_page.dart';
 import '../ui/splash/splash_page.dart';
 
 part 'router.gr.dart';

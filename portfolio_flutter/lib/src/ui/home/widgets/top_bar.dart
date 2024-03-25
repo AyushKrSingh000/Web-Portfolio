@@ -36,15 +36,22 @@ class _CustomTabBarState extends ConsumerState<CustomTabBar> {
             ),
           ),
           ...webOptions.map(
-            (e) => Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 9),
-              child: InkWell(
-                onTap: () {},
-                child: Text(
-                  e.values.first,
-                  style: GoogleFonts.poppins(
-                    fontSize: 14,
-                    fontWeight: FontWeight.w400,
+            (e) => Material(
+              color: Colors.transparent,
+              child: Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 5),
+                child: InkWell(
+                  hoverColor: Colors.grey.withOpacity(0.2),
+                  onTap: () {},
+                  child: Padding(
+                    padding: const EdgeInsets.all(4.0),
+                    child: Text(
+                      e.values.first,
+                      style: GoogleFonts.poppins(
+                        fontSize: 14,
+                        fontWeight: FontWeight.w400,
+                      ),
+                    ),
                   ),
                 ),
               ),
