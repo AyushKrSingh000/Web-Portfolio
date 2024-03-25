@@ -35,56 +35,59 @@ class _CustomTabBarState extends ConsumerState<CustomTabBar> {
               // width: 40,
             ),
           ),
-          ...webOptions.map(
-            (e) => Material(
-              color: Colors.transparent,
-              child: Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 5),
-                child: InkWell(
-                  hoverColor: Colors.grey.withOpacity(0.2),
-                  onTap: () {},
-                  child: Padding(
-                    padding: const EdgeInsets.all(4.0),
-                    child: Text(
-                      e.values.first,
-                      style: GoogleFonts.poppins(
-                        fontSize: 14,
-                        fontWeight: FontWeight.w400,
+          if (MediaQuery.sizeOf(context).width > 500)
+            ...webOptions.map(
+              (e) => Material(
+                color: Colors.transparent,
+                child: Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 5),
+                  child: InkWell(
+                    hoverColor: Colors.grey.withOpacity(0.2),
+                    onTap: () {},
+                    child: Padding(
+                      padding: const EdgeInsets.all(4.0),
+                      child: Text(
+                        e.values.first,
+                        style: GoogleFonts.poppins(
+                          fontSize: 14,
+                          fontWeight: FontWeight.w400,
+                        ),
                       ),
                     ),
                   ),
                 ),
               ),
             ),
-          ),
-          const SizedBox(
-            width: 100,
-          ),
-          Padding(
-            padding: const EdgeInsets.all(4.0),
-            child: Container(
-              width: 300,
-              decoration: BoxDecoration(
-                border: Border.all(
-                  color: Colors.white.withOpacity(0.5),
-                  width: 1.5,
-                ),
-                color: ColorUtils.getColor(context, containerColor)
-                    .withOpacity(0.1),
-                borderRadius: BorderRadius.circular(8),
-              ),
-              child: const Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Icon(
-                    Icons.search,
-                    size: 16,
+          if (MediaQuery.sizeOf(context).width > 910)
+            const SizedBox(
+              width: 100,
+            ),
+          if (MediaQuery.sizeOf(context).width > 810)
+            Padding(
+              padding: const EdgeInsets.all(4.0),
+              child: Container(
+                width: 300,
+                decoration: BoxDecoration(
+                  border: Border.all(
+                    color: Colors.white.withOpacity(0.5),
+                    width: 1.5,
                   ),
-                  Text("Ayush-Portfolio"),
-                ],
+                  color: ColorUtils.getColor(context, containerColor)
+                      .withOpacity(0.1),
+                  borderRadius: BorderRadius.circular(8),
+                ),
+                child: const Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Icon(
+                      Icons.search,
+                      size: 16,
+                    ),
+                    Text("Ayush-Portfolio"),
+                  ],
+                ),
               ),
             ),
-          ),
           const Expanded(child: SizedBox()),
           OnOffButton(
             icon: Icons.minimize_sharp,

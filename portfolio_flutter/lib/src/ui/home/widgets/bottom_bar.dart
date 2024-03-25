@@ -70,21 +70,22 @@ class CustomBottomBar extends ConsumerWidget {
             ),
           ),
           const Expanded(child: SizedBox()),
-          const Icon(
-            Icons.next_plan,
-            color: Colors.grey,
-            size: 18,
+          Image.asset(
+            'assets/images/flutter.png',
+            height: 15,
           ),
-          const SizedBox(
-            width: 5,
-          ),
-          Text(
-            'Powered by Flutter',
-            style: GoogleFonts.poppins(
-              fontSize: 12,
-              fontWeight: FontWeight.w400,
+          if (MediaQuery.sizeOf(context).width > 410) ...[
+            const SizedBox(
+              width: 5,
             ),
-          ),
+            Text(
+              'Powered by Flutter',
+              style: GoogleFonts.poppins(
+                fontSize: 12,
+                fontWeight: FontWeight.w400,
+              ),
+            ),
+          ],
           const SizedBox(
             width: 15,
           ),

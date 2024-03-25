@@ -33,20 +33,21 @@ class _HomePageState extends ConsumerState<HomePage> {
     return SafeArea(
         child: Scaffold(
       backgroundColor: ColorUtils.getColor(context, scaffoldColor),
-      body: const Column(
+      body: Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
-          CustomTabBar(),
+          const CustomTabBar(),
           Expanded(
             child: Row(
               children: [
-                CustomSideBar(),
-                ExplorerSection(),
-                Expanded(child: MainSection()),
+                const CustomSideBar(),
+                if (MediaQuery.sizeOf(context).width > 600)
+                  const ExplorerSection(),
+                const Expanded(child: MainSection()),
               ],
             ),
           ),
-          CustomBottomBar(),
+          const CustomBottomBar(),
         ],
       ),
     ));

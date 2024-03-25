@@ -17,8 +17,9 @@ class _MainSectionState extends ConsumerState<MainSection> {
     final pageId =
         ref.watch(homePageProvider.select((value) => value.selectedPage));
     return Column(
+      crossAxisAlignment: CrossAxisAlignment.stretch,
       children: [
-        MainTopBar(),
+        const MainTopBar(),
         Expanded(child: ViewScreen(pageId: pageId)),
       ],
     );
@@ -32,9 +33,7 @@ class ViewScreen extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     if (pageId == "1") {
-      return HomeSection(
-        key: ValueKey(pageId),
-      );
+      return const HomeSection();
     }
     return const SizedBox();
   }
