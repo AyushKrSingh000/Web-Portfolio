@@ -10,10 +10,30 @@ final homePageProvider =
 );
 
 class HomePageModel extends StateNotifier<HomePageState> {
-  HomePageModel() : super(const HomePageState()) {
-    init();
+  HomePageModel() : super(const HomePageState());
+  addPage(PageData data) {
+    if (state.pages.indexWhere((element) => element.pageId == data.pageId) ==
+        -1) {
+      state = state.copyWith(pages: state.pages.toList()..add(data));
+    }
+    state = state.copyWith(selectedPage: data.pageId);
   }
-  init() {}
+
+  removePage(String id) {
+    int newIndex = state.pages.indexWhere((e) => e.pageId == id);
+    List<PageData> datas = state.pages.toList();
+    datas.removeWhere((e) => e.pageId == id);
+    if (newIndex != 0) {
+      newIndex -= 1;
+    }
+    state = state.copyWith(
+        pages: datas,
+        selectedPage: state.selectedPage == id
+            ? datas.isEmpty
+                ? ""
+                : datas[newIndex].pageId
+            : state.selectedPage);
+  }
 }
 
 @freezed

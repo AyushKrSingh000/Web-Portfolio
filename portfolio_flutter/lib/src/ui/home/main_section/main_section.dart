@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:portfolio_flutter/src/ui/home/about/about_section.dart';
 import 'package:portfolio_flutter/src/ui/home/home/home_section.dart';
 import 'package:portfolio_flutter/src/ui/home/home_page_model.dart';
 import 'package:portfolio_flutter/src/ui/home/main_section/main_top_bar.dart';
@@ -35,6 +36,7 @@ class ViewScreen extends ConsumerWidget {
     if (pageId == "1") {
       return const HomeSection();
     }
+    if (pageId == "2") return const AboutSection();
     return const SizedBox();
   }
 }

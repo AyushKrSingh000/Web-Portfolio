@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:portfolio_flutter/src/models/page_data.dart';
+import 'package:portfolio_flutter/src/ui/home/home_page_model.dart';
 
 class ExplorerSection extends ConsumerStatefulWidget {
   const ExplorerSection({super.key});
@@ -81,13 +83,27 @@ class _ExplorerSectionState extends ConsumerState<ExplorerSection> {
               height: 5,
             ),
             if (!isHidden) ...[
-              const FileNameSection(
-                  fileName: 'home.jsx', image: "assets/images/vscode.png"),
+              FileNameSection(
+                  onTap: () {
+                    ref.read(homePageProvider.notifier).addPage(const PageData(
+                        pageId: "1",
+                        pageName: "home.jsx",
+                        pageIcon: 'assets/images/vscode.png'));
+                  },
+                  fileName: 'home.jsx',
+                  image: "assets/images/vscode.png"),
               const SizedBox(
                 height: 8,
               ),
-              const FileNameSection(
-                  fileName: 'about.html', image: "assets/images/vscode.png"),
+              FileNameSection(
+                  onTap: () {
+                    ref.read(homePageProvider.notifier).addPage(const PageData(
+                        pageId: "2",
+                        pageName: "about.html",
+                        pageIcon: 'assets/images/vscode.png'));
+                  },
+                  fileName: 'about.html',
+                  image: "assets/images/vscode.png"),
               const SizedBox(
                 height: 8,
               ),
@@ -120,31 +136,36 @@ class _ExplorerSectionState extends ConsumerState<ExplorerSection> {
 class FileNameSection extends ConsumerWidget {
   final String fileName;
   final String image;
+  final VoidCallback? onTap;
   const FileNameSection({
     super.key,
     required this.fileName,
     required this.image,
+    this.onTap,
   });
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    return Row(
-      children: [
-        Image.asset(
-          image,
-          height: 12,
-        ),
-        const SizedBox(
-          width: 5,
-        ),
-        Text(
-          fileName,
-          style: GoogleFonts.poppins(
-            fontSize: 13.5,
-            color: Colors.white.withOpacity(0.7),
+    return InkWell(
+      onTap: onTap,
+      child: Row(
+        children: [
+          Image.asset(
+            image,
+            height: 12,
           ),
-        )
-      ],
+          const SizedBox(
+            width: 5,
+          ),
+          Text(
+            fileName,
+            style: GoogleFonts.poppins(
+              fontSize: 13.5,
+              color: Colors.white.withOpacity(0.7),
+            ),
+          )
+        ],
+      ),
     );
   }
 }
