@@ -107,8 +107,16 @@ class _ExplorerSectionState extends ConsumerState<ExplorerSection> {
               const SizedBox(
                 height: 8,
               ),
-              const FileNameSection(
-                  fileName: 'contact.css', image: "assets/images/vscode.png"),
+              FileNameSection(
+                  onTap: () {
+                    ref.read(homePageProvider.notifier).addPage(const PageData(
+                          pageId: "3",
+                          pageName: "contact.css",
+                          pageIcon: 'assets/images/vscode.png',
+                        ));
+                  },
+                  fileName: 'contact.css',
+                  image: "assets/images/vscode.png"),
               const SizedBox(
                 height: 8,
               ),
