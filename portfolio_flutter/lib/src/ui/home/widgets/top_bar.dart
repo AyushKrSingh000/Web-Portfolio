@@ -3,7 +3,7 @@ import 'package:flutter/widgets.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:google_fonts/google_fonts.dart';
 import '../../../constants/colors.dart';
-
+import "dart:html" as html;
 import '../../../constants/constants.dart';
 import '../../../utils/color_utils.dart';
 
@@ -15,6 +15,7 @@ class CustomTabBar extends ConsumerStatefulWidget {
 }
 
 class _CustomTabBarState extends ConsumerState<CustomTabBar> {
+  bool isFullScreen = false;
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -94,13 +95,26 @@ class _CustomTabBarState extends ConsumerState<CustomTabBar> {
             onTap: () {},
           ),
           OnOffButton(
-            icon: Icons.square_outlined,
-            onTap: () {},
+            icon: isFullScreen ? Icons.fullscreen_exit : Icons.fullscreen,
+            onTap: () {
+              if (!isFullScreen) {
+                html.document.documentElement?.requestFullscreen();
+              } else {
+                html.document.exitFullscreen();
+              }
+              if (mounted) {
+                setState(() {
+                  isFullScreen = !isFullScreen;
+                });
+              }
+            },
           ),
           OnOffButton(
             icon: Icons.close,
             backgroundColor: Colors.red,
-            onTap: () {},
+            onTap: () {
+              // html.window.close();
+            },
           ),
         ],
       ),
