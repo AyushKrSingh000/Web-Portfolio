@@ -1,0 +1,17 @@
+class: Projects
+table: projects
+fields:
+  projectName: String
+  desc: String
+  imageUrl: String
+  techStacks: List<String>
+  sourceCode: String
+  liveDemo: String
+  isPublic: bool
+# final int projectId;
+#   final String projectName;
+#   final String desc;
+#   final String imageUrl;
+#   final List<String> techStacks;
+#   final String sourceCode;
+#   final String liveDemo;

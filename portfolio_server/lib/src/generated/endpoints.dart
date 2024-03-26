@@ -10,6 +10,8 @@
 // ignore_for_file: no_leading_underscores_for_library_prefixes
 import 'package:serverpod/serverpod.dart' as _i1;
 import '../endpoints/example_endpoint.dart' as _i2;
+import '../endpoints/projects_endpoint.dart' as _i3;
+import 'package:portfolio_server/src/generated/articles.dart' as _i4;
 
 class Endpoints extends _i1.EndpointDispatch {
   @override
@@ -20,7 +22,13 @@ class Endpoints extends _i1.EndpointDispatch {
           server,
           'example',
           null,
-        )
+        ),
+      'projects': _i3.ProjectsEndpoint()
+        ..initialize(
+          server,
+          'projects',
+          null,
+        ),
     };
     connectors['example'] = _i1.EndpointConnector(
       name: 'example',
@@ -44,6 +52,40 @@ class Endpoints extends _i1.EndpointDispatch {
             params['name'],
           ),
         )
+      },
+    );
+    connectors['projects'] = _i1.EndpointConnector(
+      name: 'projects',
+      endpoint: endpoints['projects']!,
+      methodConnectors: {
+        'getProjects': _i1.MethodConnector(
+          name: 'getProjects',
+          params: {},
+          call: (
+            _i1.Session session,
+            Map<String, dynamic> params,
+          ) async =>
+              (endpoints['projects'] as _i3.ProjectsEndpoint)
+                  .getProjects(session),
+        ),
+        'addProjects': _i1.MethodConnector(
+          name: 'addProjects',
+          params: {
+            'projects': _i1.ParameterDescription(
+              name: 'projects',
+              type: _i1.getType<_i4.Projects>(),
+              nullable: false,
+            )
+          },
+          call: (
+            _i1.Session session,
+            Map<String, dynamic> params,
+          ) async =>
+              (endpoints['projects'] as _i3.ProjectsEndpoint).addProjects(
+            session,
+            params['projects'],
+          ),
+        ),
       },
     );
   }

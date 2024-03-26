@@ -3,6 +3,82 @@
     {
       "type": "createTable",
       "createTable": {
+        "name": "projects",
+        "dartName": "Projects",
+        "module": "portfolio",
+        "schema": "public",
+        "columns": [
+          {
+            "name": "id",
+            "columnType": 2,
+            "isNullable": false,
+            "columnDefault": "nextval('projects_id_seq'::regclass)",
+            "dartType": "int?"
+          },
+          {
+            "name": "projectName",
+            "columnType": 0,
+            "isNullable": false,
+            "dartType": "String"
+          },
+          {
+            "name": "desc",
+            "columnType": 0,
+            "isNullable": false,
+            "dartType": "String"
+          },
+          {
+            "name": "imageUrl",
+            "columnType": 0,
+            "isNullable": false,
+            "dartType": "String"
+          },
+          {
+            "name": "techStacks",
+            "columnType": 8,
+            "isNullable": false,
+            "dartType": "List<String>"
+          },
+          {
+            "name": "sourceCode",
+            "columnType": 0,
+            "isNullable": false,
+            "dartType": "String"
+          },
+          {
+            "name": "liveDemo",
+            "columnType": 0,
+            "isNullable": false,
+            "dartType": "String"
+          },
+          {
+            "name": "isPublic",
+            "columnType": 1,
+            "isNullable": false,
+            "dartType": "bool"
+          }
+        ],
+        "foreignKeys": [],
+        "indexes": [
+          {
+            "indexName": "projects_pkey",
+            "elements": [
+              {
+                "type": 0,
+                "definition": "id"
+              }
+            ],
+            "type": "btree",
+            "isUnique": true,
+            "isPrimary": true
+          }
+        ],
+        "managed": true
+      }
+    },
+    {
+      "type": "createTable",
+      "createTable": {
         "name": "serverpod_auth_key",
         "dartName": "AuthKey",
         "module": "serverpod",

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:portfolio_flutter/src/ui/articles/articles_section.dart';
+import 'package:portfolio_flutter/src/ui/home/articles/articles_section.dart';
 import 'package:portfolio_flutter/src/ui/home/about/about_section.dart';
 import 'package:portfolio_flutter/src/ui/home/contact/contact_section.dart';
 import 'package:portfolio_flutter/src/ui/home/github/github_section.dart';
