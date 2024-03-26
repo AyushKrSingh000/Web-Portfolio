@@ -21,6 +21,7 @@ void main() async {
   final container = ProviderContainer(overrides: [
     sharedPreferencesProvider.overrideWithValue(sharedPreferences),
   ]);
+
   runApp(
     UncontrolledProviderScope(
       container: container,

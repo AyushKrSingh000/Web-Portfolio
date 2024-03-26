@@ -5,6 +5,9 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:portfolio_flutter/src/ui/widgets/circle_widget.dart';
 import 'package:portfolio_flutter/src/ui/widgets/custom_button.dart';
 
+import '../../../models/page_data.dart';
+import '../home_page_model.dart';
+
 class HomeSection extends ConsumerStatefulWidget {
   const HomeSection({super.key});
 
@@ -126,7 +129,15 @@ class _HomeSectionState extends ConsumerState<HomeSection> {
                 children: [
                   CustomButton(
                     text: 'View Projects',
-                    onTap: () {},
+                    onTap: () {
+                      ref.read(homePageProvider.notifier).addPage(
+                            const PageData(
+                              pageId: "4",
+                              pageName: "projects.js",
+                              pageIcon: 'assets/images/javascript.png',
+                            ),
+                          );
+                    },
                     isProcessing: false,
                   ),
                   const SizedBox(

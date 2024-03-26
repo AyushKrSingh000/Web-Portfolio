@@ -2,6 +2,8 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
+import '../home_page.dart';
+
 class CustomSideBar extends ConsumerStatefulWidget {
   const CustomSideBar({super.key});
 
@@ -20,66 +22,71 @@ class _CustomSideBarState extends ConsumerState<CustomSideBar> {
           right: BorderSide(color: Colors.grey.withOpacity(0.5), width: 0.3),
         ),
       ),
-      child: const Padding(
-        padding: EdgeInsets.only(left: 10),
+      child: Padding(
+        padding: const EdgeInsets.only(left: 10),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            SizedBox(
+            const SizedBox(
               height: 5,
             ),
-            Icon(
-              Icons.file_download,
-              color: Colors.grey,
-              size: 32,
+            InkWell(
+              onTap: () {
+                key.currentState?.openDrawer();
+              },
+              child: const Icon(
+                Icons.file_download,
+                color: Colors.grey,
+                size: 32,
+              ),
             ),
-            SizedBox(
+            const SizedBox(
               height: 15,
             ),
-            Icon(
+            const Icon(
               Icons.person,
               color: Colors.grey,
               size: 32,
             ),
-            SizedBox(
+            const SizedBox(
               height: 15,
             ),
-            Icon(
+            const Icon(
               Icons.person,
               color: Colors.grey,
               size: 32,
             ),
-            SizedBox(
+            const SizedBox(
               height: 15,
             ),
-            Icon(
+            const Icon(
               Icons.person,
               color: Colors.grey,
               size: 32,
             ),
-            SizedBox(
+            const SizedBox(
               height: 15,
             ),
-            Icon(
+            const Icon(
               Icons.person,
               color: Colors.grey,
               size: 32,
             ),
-            Expanded(child: SizedBox()),
-            Icon(
+            const Expanded(child: SizedBox()),
+            const Icon(
               CupertinoIcons.person_alt_circle,
               color: Colors.grey,
               size: 32,
             ),
-            SizedBox(
+            const SizedBox(
               height: 15,
             ),
-            Icon(
+            const Icon(
               Icons.settings_outlined,
               color: Colors.grey,
               size: 32,
             ),
-            SizedBox(
+            const SizedBox(
               height: 10,
             )
           ],

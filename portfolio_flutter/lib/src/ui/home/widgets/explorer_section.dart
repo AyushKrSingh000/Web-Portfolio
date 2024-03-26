@@ -1,3 +1,4 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -89,6 +90,7 @@ class _ExplorerSectionState extends ConsumerState<ExplorerSection> {
                         pageId: "1",
                         pageName: "home.jsx",
                         pageIcon: 'assets/images/vscode.png'));
+                    canPop(context);
                   },
                   fileName: 'home.jsx',
                   image: "assets/images/vscode.png"),
@@ -101,6 +103,7 @@ class _ExplorerSectionState extends ConsumerState<ExplorerSection> {
                         pageId: "2",
                         pageName: "about.html",
                         pageIcon: 'assets/images/vscode.png'));
+                    canPop(context);
                   },
                   fileName: 'about.html',
                   image: "assets/images/vscode.png"),
@@ -114,6 +117,7 @@ class _ExplorerSectionState extends ConsumerState<ExplorerSection> {
                           pageName: "contact.css",
                           pageIcon: 'assets/images/vscode.png',
                         ));
+                    canPop(context);
                   },
                   fileName: 'contact.css',
                   image: "assets/images/vscode.png"),
@@ -127,24 +131,49 @@ class _ExplorerSectionState extends ConsumerState<ExplorerSection> {
                           pageName: "projects.js",
                           pageIcon: 'assets/images/javascript.png',
                         ));
+                    canPop(context);
                   },
                   fileName: 'projects.js',
                   image: "assets/images/javascript.png"),
               const SizedBox(
                 height: 8,
               ),
-              const FileNameSection(
-                  fileName: 'articles.json', image: "assets/images/vscode.png"),
+              FileNameSection(
+                  onTap: () {
+                    ref.read(homePageProvider.notifier).addPage(const PageData(
+                          pageId: "5",
+                          pageName: "articles.json",
+                          pageIcon: 'assets/images/vscode.png',
+                        ));
+                    canPop(context);
+                  },
+                  fileName: 'articles.json',
+                  image: "assets/images/vscode.png"),
               const SizedBox(
                 height: 8,
               ),
-              const FileNameSection(
-                  fileName: 'github.md', image: "assets/images/vscode.png")
+              FileNameSection(
+                  onTap: () {
+                    ref.read(homePageProvider.notifier).addPage(const PageData(
+                          pageId: "6",
+                          pageName: "github.md",
+                          pageIcon: 'assets/images/vscode.png',
+                        ));
+                    canPop(context);
+                  },
+                  fileName: 'github.md',
+                  image: "assets/images/vscode.png")
             ],
           ],
         ),
       ),
     );
+  }
+
+  void canPop(BuildContext context) {
+    if (MediaQuery.sizeOf(context).width <= 600) {
+      context.maybePop();
+    }
   }
 }
 

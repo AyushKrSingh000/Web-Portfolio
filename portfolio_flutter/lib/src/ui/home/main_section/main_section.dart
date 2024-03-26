@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:portfolio_flutter/src/ui/articles/articles_section.dart';
 import 'package:portfolio_flutter/src/ui/home/about/about_section.dart';
 import 'package:portfolio_flutter/src/ui/home/contact/contact_section.dart';
+import 'package:portfolio_flutter/src/ui/home/github/github_section.dart';
 import 'package:portfolio_flutter/src/ui/home/home/home_section.dart';
 import 'package:portfolio_flutter/src/ui/home/home_page_model.dart';
 import 'package:portfolio_flutter/src/ui/home/main_section/main_top_bar.dart';
@@ -39,6 +41,8 @@ class ViewScreen extends ConsumerWidget {
     if (pageId == "2") return const AboutSection();
     if (pageId == '3') return const ContactSection();
     if (pageId == "4") return const ProjectsSection();
+    if (pageId == "5") return const ArticlesSection();
+    if (pageId == "6") return const GitHubSection();
     return const SizedBox();
   }
 }
