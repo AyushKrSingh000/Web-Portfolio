@@ -118,11 +118,11 @@ class _$HomePageStateImpl implements _HomePageState {
       {this.status = HomePageStatus.initial,
       final List<PageData> pages = const [
         PageData(
-            pageId: "1",
-            pageName: 'home.jsx',
-            pageIcon: "assets/images/vscode.png")
+            pageId: "4",
+            pageName: 'project.js',
+            pageIcon: "assets/images/javascript.png")
       ],
-      this.selectedPage = "1"})
+      this.selectedPage = "4"})
       : _pages = pages;
 
   @override

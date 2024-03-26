@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:portfolio_flutter/src/constants/strings.dart';
+import 'package:portfolio_flutter/src/ui/widgets/custom_button.dart';
+import 'package:portfolio_flutter/src/ui/widgets/custom_text_field.dart';
 import 'package:portfolio_flutter/src/utils/web_utils.dart';
 
 class ContactSection extends ConsumerStatefulWidget {
@@ -14,15 +16,15 @@ class ContactSection extends ConsumerStatefulWidget {
 class _ContactSectionState extends ConsumerState<ContactSection> {
   @override
   Widget build(BuildContext context) {
-    return MediaQuery.sizeOf(context).width > 900
+    return MediaQuery.sizeOf(context).width > 1100
         ? Row(
             children: [
-              const SizedBox(height: 50),
+              const SizedBox(height: 40),
               const Expanded(
                 child: SocialsSection(),
               ),
               Padding(
-                padding: const EdgeInsets.only(bottom: 100),
+                padding: const EdgeInsets.only(bottom: 50),
                 child: VerticalDivider(
                   width: 0.2,
                   color: Colors.white.withOpacity(0.5),
@@ -178,6 +180,73 @@ class ContactUsForm extends ConsumerWidget {
                 color: const Color(0xff89a4bb)),
           ),
           const SizedBox(height: 30),
+          if (MediaQuery.sizeOf(context).width > 800) ...[
+            Row(
+              children: [
+                Expanded(
+                  child: CustomTextField(
+                      label: 'Name',
+                      hintText: "",
+                      initialText: "",
+                      maxLength: 30,
+                      onChanged: (value) {}),
+                ),
+                const SizedBox(width: 15),
+                Expanded(
+                  child: CustomTextField(
+                      label: 'Email',
+                      hintText: "",
+                      initialText: "",
+                      maxLength: 30,
+                      onChanged: (value) {}),
+                ),
+              ],
+            ),
+          ] else ...[
+            CustomTextField(
+                label: 'Name',
+                hintText: "",
+                initialText: "",
+                maxLength: 30,
+                onChanged: (value) {}),
+            const SizedBox(height: 20),
+            CustomTextField(
+                label: 'Email',
+                hintText: "",
+                initialText: "",
+                maxLength: 30,
+                onChanged: (value) {}),
+          ],
+          const SizedBox(
+            height: 20,
+          ),
+          CustomTextField(
+              label: 'Subject',
+              hintText: "",
+              initialText: "",
+              maxLength: 30,
+              onChanged: (value) {}),
+          const SizedBox(
+            height: 20,
+          ),
+          CustomTextField(
+              label: 'Message',
+              hintText: "",
+              initialText: "",
+              maxLength: 200,
+              maxlines: 5,
+              onChanged: (value) {}),
+          const SizedBox(
+            height: 20,
+          ),
+          CustomButton(
+              text: "Submit",
+              height: 40,
+              borderRadius: 0,
+              width: 100,
+              fontSize: 14,
+              onTap: () {},
+              isProcessing: false),
         ],
       ),
     );

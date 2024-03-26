@@ -42,12 +42,12 @@ class HomePageState with _$HomePageState {
     @Default(HomePageStatus.initial) HomePageStatus status,
     @Default([
       PageData(
-          pageId: "1",
-          pageName: 'home.jsx',
-          pageIcon: "assets/images/vscode.png")
+          pageId: "4",
+          pageName: 'project.js',
+          pageIcon: "assets/images/javascript.png")
     ])
     List<PageData> pages,
-    @Default("1") String selectedPage,
+    @Default("4") String selectedPage,
   }) = _HomePageState;
 }
 

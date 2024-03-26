@@ -42,8 +42,8 @@ class _MainTopBarState extends ConsumerState<MainTopBar> {
                             color: Colors.white.withOpacity(0.5),
                           ),
                           bottom: BorderSide(
-                            width: 0.5,
-                            color: Colors.white.withOpacity(0.5),
+                            width: 0.7,
+                            color: Colors.white.withOpacity(0.7),
                           ),
                         ),
                       ),

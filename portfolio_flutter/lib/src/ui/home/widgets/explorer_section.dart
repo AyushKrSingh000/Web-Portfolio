@@ -120,7 +120,14 @@ class _ExplorerSectionState extends ConsumerState<ExplorerSection> {
               const SizedBox(
                 height: 8,
               ),
-              const FileNameSection(
+              FileNameSection(
+                  onTap: () {
+                    ref.read(homePageProvider.notifier).addPage(const PageData(
+                          pageId: "4",
+                          pageName: "projects.js",
+                          pageIcon: 'assets/images/javascript.png',
+                        ));
+                  },
                   fileName: 'projects.js',
                   image: "assets/images/javascript.png"),
               const SizedBox(

@@ -9,4 +9,8 @@ final socials = {
         "https://www.linkedin.com/in/ayush-kumar-singh-9ab626216/"
   },
   "instagram": {"ayush_kr.singh": "https://instagram.com/ayush_kr.singh/"},
+  "google_play": {
+    "ayushkrsingh":
+        "https://play.google.com/store/apps/developer?id=AYUSH+KUMAR+SINGH"
+  }
 };
