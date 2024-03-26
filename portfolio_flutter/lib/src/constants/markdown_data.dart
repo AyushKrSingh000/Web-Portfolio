@@ -5,10 +5,16 @@ getHtmlString(BuildContext context) {
 <style>
   body {
     color: white; /* Set all text color to white */
+    font-family: Arial, sans-serif;
   }
   
+  .repo-card {
+    width: 46%;
+    display: inline-block;
+    vertical-align: top;
+    margin-right: 2%;
+  }
 </style>
-
 <h1 align="center">Hi 👋, I'm Ayush Kumar Singh</h1>
 
 <h3 align="center">A passionate App developer from India</h3>
@@ -20,44 +26,54 @@ getHtmlString(BuildContext context) {
          src="https://github-profile-trophy.vercel.app/?username=AyushKrSingh000&row=1&column=6&theme=radical&margin-w=15e" />
 </p>
 <hr>
+<hr>
+<h1>My Pinned Repositories</h1>
 
+<!-- Repository 1 -->
+<a href="https://github.com/AyushKrSingh000/pgrkam" class="repo-card" target="_blank">
+  <img src="https://github-readme-stats.vercel.app/api/pin/?username=AyushKrSingh000&repo=pgrkam&theme=radical" alt="pgrkam" style="width: 100%;">
+</a>
 
-<h1 style="text-align:left">💫 About Me:</h1>
+<!-- Repository 2 -->
+<a href="https://github.com/AyushKrSingh000/Portfolio-Web-App" class="repo-card" target="_blank">
+  <img src="https://github-readme-stats.vercel.app/api/pin/?username=AyushKrSingh000&repo=Portfolio-Web-App&theme=radical" alt="Portfolio-Web-App" style="width: 100%;">
+</a>
 
-<ul>
-<li>🔭 I’m currently working on <strong>App Development</strong></li>
-<li>🌱 I’m currently learning <strong>MERN</strong></li>
-<li>👯 I’m looking to collaborate on <strong>App Development Project (Flutter)</strong></li>
-<li>📫 How to reach me <a href="mailto:ayushkumarsingh0708@gmail.com">ayushkumarsingh0708@gmail.com</a></li>
-</ul>
+<!-- Repository 3 -->
+<a href="https://github.com/Vriddhi-SIH/SIH" class="repo-card" target="_blank">
+  <img src="https://github-readme-stats.vercel.app/api/pin/?username=Vriddhi-SIH&repo=SIH&theme=radical" alt="SIH" style="width: 100%;">
+</a>
+
+<!-- Repository 4 -->
+<a href="https://github.com/AyushKrSingh000/Saarthi-Camps" class="repo-card" target="_blank">
+  <img src="https://github-readme-stats.vercel.app/api/pin/?username=AyushKrSingh000&repo=Saarthi-Camps&theme=radical" alt="Saarthi-Camps" style="width: 100%;">
+</a>
+
+<!-- Repository 5 -->
+<a href="https://github.com/AyushKrSingh000/Google-Docs-Clone" class="repo-card" target="_blank">
+  <img src="https://github-readme-stats.vercel.app/api/pin/?username=AyushKrSingh000&repo=Google-Docs-Clone&theme=radical" alt="Google-Docs-Clone" style="width: 100%;">
+</a>
+
+<!-- Repository 6 -->
+<a href="https://github.com/AyushKrSingh000/Expense_Tracker_Workshop_App" class="repo-card" target="_blank">
+  <img src="https://github-readme-stats.vercel.app/api/pin/?username=AyushKrSingh000&repo=Expense_Tracker_Workshop_App&theme=radical" alt="Expense_Tracker_Workshop_App" style="width: 100%;">
+</a>
+
 <hr>
 
-<h1 style="text-align:left">Connect with me:</h1>
-<p style="text-align:left">
-<a href="https://instagram.com/ayush_kr.singh" target="blank"><img align="center" src="https://img.shields.io/badge/instagram-%23000000.svg?&style=for-the-badge&logo=instagram&logoColor=white" alt="ayush_kr.singh" height="40" width="150" /></a>
-<a href="https://www.linkedin.com/in/ayush-kumar-singh-9ab626216" target="blank"><img align="center" src="https://img.shields.io/badge/linkedin-%231E77B5.svg?&style=for-the-badge&logo=linkedin&logoColor=white" alt="ayush-kumar-singh-9ab626216" height="40" width="150" /></a>
-</p>
-<h1 style="text-align:left">Languages and Tools:</h1>
-<p style="text-align:left"> <a href="https://developer.android.com" target="_blank" rel="noreferrer"> <img src="https://profilinator.rishav.dev/skills-assets/android-original-wordmark.svg" alt="android" width="40" height="40"/> </a> <a href="https://www.cprogramming.com/" target="_blank" rel="noreferrer"> <img src="https://profilinator.rishav.dev/skills-assets/c-original.svg" alt="c" width="40" height="40"/> </a> <a href="https://www.w3schools.com/cpp/" target="_blank" rel="noreferrer"> <img src="https://profilinator.rishav.dev/skills-assets/cplusplus-original.svg" alt="cplusplus" width="40" height="40"/> </a> <a href="https://www.w3schools.com/css/" target="_blank" rel="noreferrer"> <img src="https://profilinator.rishav.dev/skills-assets/css3-original-wordmark.svg" alt="css3" width="40" height="40"/> </a> <a href="https://dart.dev" target="_blank" rel="noreferrer"> <img src="https://www.vectorlogo.zone/logos/dartlang/dartlang-icon.svg" alt="dart" width="40" height="40"/> </a> <a href="https://firebase.google.com/" target="_blank" rel="noreferrer"> <img src="https://www.vectorlogo.zone/logos/firebase/firebase-icon.svg" alt="firebase" width="40" height="40"/> </a> <a href="https://flutter.dev" target="_blank" rel="noreferrer"> <img src="https://www.vectorlogo.zone/logos/flutterio/flutterio-icon.svg" alt="flutter" width="40" height="40"/> </a> <a href="https://www.w3.org/html/" target="_blank" rel="noreferrer"> <img src="https://profilinator.rishav.dev/skills-assets/html5-original-wordmark.svg" alt="html5" width="40" height="40"/> </a> <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript" target="_blank" rel="noreferrer"> <img src="https://profilinator.rishav.dev/skills-assets/javascript-original.svg" alt="javascript" width="40" height="40"/> </a> <a href="https://www.mysql.com/" target="_blank" rel="noreferrer"> <img src="https://profilinator.rishav.dev/skills-assets/mysql-original-wordmark.svg" alt="mysql" width="40" height="40"/> </a> <a href="https://www.python.org" target="_blank" rel="noreferrer"> <img src="https://profilinator.rishav.dev/skills-assets/python-original.svg" alt="python" width="40" height="40"/> </a> </p>
-<br>
-<hr>
-
-<h1 style="text-align:left">📊 GitHub Stats:</h1>
-<p >
-<img src="https://github-readme-activity-graph.vercel.app/graph?username=AyushKrSingh000&bg_color=271d44&color=f702e3&line=a8059d&point=ffffff&area=true&hide_border=true width="100%" height="150px">
-</p>
+<h1>GitHub Stats:</h1>
+<img src="https://camo.githubusercontent.com/2fc057551d9308ef6a488ade1b50e36939d787f99a2d5f59257c3920c8c6efe8/68747470733a2f2f6769746875622d726561646d652d61637469766974792d67726170682e76657263656c2e6170702f67726170683f757365726e616d653d41797573684b7253696e67683030302662675f636f6c6f723d32373164343426636f6c6f723d663730326533266c696e653d61383035396426706f696e743d66666666666626617265613d7472756526686964655f626f726465723d74727565" alt="AyushKrSingh000" data-canonical-src="https://github-readme-activity-graph.vercel.app/graph?username=AyushKrSingh000&amp;bg_color=271d44&amp;color=f702e3&amp;line=a8059d&amp;point=ffffff&amp;area=true&amp;hide_border=true" style="max-width: 100%;">
 <p>
 <img src="https://github-readme-streak-stats.herokuapp.com?user=AyushKrSingh000&theme=radical&hide_border=false" width="50%">
-    <img src="https://github-readme-stats.vercel.app/api?username=AyushKrSingh000&show_icons=true&theme=radical" alt="AyushKrSingh000" width="46%">
+<img src="https://github-readme-stats.vercel.app/api?username=AyushKrSingh000&show_icons=true&theme=radical" alt="AyushKrSingh000" width="46%">
 </p>
 <hr>
+<img src="https://firebasestorage.googleapis.com/v0/b/portfolio-b7eff.appspot.com/o/contributions.png?alt=media&token=9348033a-2da3-429c-bcf8-8cd7a2b52765
+" alt="AyushKrSingh000" width="95%">
 
-<h2 style="text-align:center">Holopin Badges:</h2>
+
+<h1>Holopin Badges:</h1>
 <p style="text-align:center"> <img src="https://holopin.me/@ayushkrsingh000" width="60%"> </p>
 <hr>
-
-<h3 style="text-align:center">✍️ Random Dev Quote</h3>
-<img src="https://quotes-github-readme.vercel.app/api?type=horizontal&theme=radical" width="100%">
-
 """;
 }

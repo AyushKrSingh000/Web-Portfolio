@@ -89,11 +89,11 @@ class _ExplorerSectionState extends ConsumerState<ExplorerSection> {
                     ref.read(homePageProvider.notifier).addPage(const PageData(
                         pageId: "1",
                         pageName: "home.jsx",
-                        pageIcon: 'assets/images/vscode.png'));
+                        pageIcon: 'assets/images/react.png'));
                     canPop(context);
                   },
                   fileName: 'home.jsx',
-                  image: "assets/images/vscode.png"),
+                  image: "assets/images/react.png"),
               const SizedBox(
                 height: 8,
               ),
@@ -102,11 +102,11 @@ class _ExplorerSectionState extends ConsumerState<ExplorerSection> {
                     ref.read(homePageProvider.notifier).addPage(const PageData(
                         pageId: "2",
                         pageName: "about.html",
-                        pageIcon: 'assets/images/vscode.png'));
+                        pageIcon: 'assets/images/html.png'));
                     canPop(context);
                   },
                   fileName: 'about.html',
-                  image: "assets/images/vscode.png"),
+                  image: "assets/images/html.png"),
               const SizedBox(
                 height: 8,
               ),
@@ -115,12 +115,12 @@ class _ExplorerSectionState extends ConsumerState<ExplorerSection> {
                     ref.read(homePageProvider.notifier).addPage(const PageData(
                           pageId: "3",
                           pageName: "contact.css",
-                          pageIcon: 'assets/images/vscode.png',
+                          pageIcon: 'assets/images/css.png',
                         ));
                     canPop(context);
                   },
                   fileName: 'contact.css',
-                  image: "assets/images/vscode.png"),
+                  image: "assets/images/css.png"),
               const SizedBox(
                 height: 8,
               ),
@@ -143,12 +143,12 @@ class _ExplorerSectionState extends ConsumerState<ExplorerSection> {
                     ref.read(homePageProvider.notifier).addPage(const PageData(
                           pageId: "5",
                           pageName: "articles.json",
-                          pageIcon: 'assets/images/vscode.png',
+                          pageIcon: 'assets/images/json.png',
                         ));
                     canPop(context);
                   },
                   fileName: 'articles.json',
-                  image: "assets/images/vscode.png"),
+                  image: "assets/images/json.png"),
               const SizedBox(
                 height: 8,
               ),
@@ -157,12 +157,12 @@ class _ExplorerSectionState extends ConsumerState<ExplorerSection> {
                     ref.read(homePageProvider.notifier).addPage(const PageData(
                           pageId: "6",
                           pageName: "github.md",
-                          pageIcon: 'assets/images/vscode.png',
+                          pageIcon: 'assets/images/markdown.png',
                         ));
                     canPop(context);
                   },
                   fileName: 'github.md',
-                  image: "assets/images/vscode.png")
+                  image: "assets/images/markdown.png")
             ],
           ],
         ),
