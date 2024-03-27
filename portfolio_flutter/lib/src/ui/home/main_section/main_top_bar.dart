@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:portfolio_flutter/src/constants/colors.dart';
 import 'package:portfolio_flutter/src/ui/home/home_page_model.dart';
+
+import '../../../utils/color_utils.dart';
 
 class MainTopBar extends ConsumerStatefulWidget {
   const MainTopBar({super.key});
@@ -35,7 +38,7 @@ class _MainTopBarState extends ConsumerState<MainTopBar> {
                       decoration: BoxDecoration(
                         color: pageId == e.pageId
                             ? Colors.white.withOpacity(0.2)
-                            : Colors.black,
+                            : ColorUtils.getColor(ref, mainTopBarColor),
                         border: Border(
                           right: BorderSide(
                             width: 0.5,

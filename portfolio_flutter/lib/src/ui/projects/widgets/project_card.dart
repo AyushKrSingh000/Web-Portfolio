@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:portfolio_client/portfolio_client.dart';
+import 'package:portfolio_flutter/src/constants/colors.dart';
+import 'package:portfolio_flutter/src/utils/color_utils.dart';
 
 class ProjectCard extends ConsumerWidget {
   final Projects data;
@@ -19,7 +21,7 @@ class ProjectCard extends ConsumerWidget {
                 MediaQuery.sizeOf(context).width > 580
             ? 230
             : 270,
-        color: const Color(0xff031d33),
+        color: ColorUtils.getColor(ref, projectBgColor),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
@@ -40,7 +42,7 @@ class ProjectCard extends ConsumerWidget {
                     style: GoogleFonts.nunitoSans(
                         fontSize: 19,
                         fontWeight: FontWeight.w600,
-                        color: const Color(0xff89a4bb)),
+                        color: ColorUtils.getColor(ref, projectTextColor)),
                   ),
                   Text(
                     data.desc,
@@ -49,7 +51,8 @@ class ProjectCard extends ConsumerWidget {
                     style: GoogleFonts.poppins(
                       fontSize: 13,
                       fontWeight: FontWeight.w300,
-                      color: const Color(0xff89a4bb),
+                      color: ColorUtils.getColor(ref, projectTextColor)
+                          .withOpacity(0.6),
                     ),
                   ),
                   const SizedBox(

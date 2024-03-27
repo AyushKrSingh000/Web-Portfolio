@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-import '../../constants/colors.dart';
-import '../../utils/color_utils.dart';
 import '../home/home_page_model.dart';
 import '../widgets/custom_button.dart';
 import 'widgets/project_card.dart';
@@ -36,8 +34,7 @@ class _ProjectsSectionState extends ConsumerState<ProjectsSection> {
             controller: _scrollController,
             thickness: 10,
             radius: const Radius.circular(20),
-            thumbColor:
-                ColorUtils.getColor(context, containerColor).withOpacity(0.5),
+            thumbColor: Colors.white.withOpacity(0.5),
             child: SingleChildScrollView(
               controller: _scrollController,
               child: Padding(

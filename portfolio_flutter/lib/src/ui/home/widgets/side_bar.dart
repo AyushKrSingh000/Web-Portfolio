@@ -3,7 +3,15 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:portfolio_client/portfolio_client.dart';
+import 'package:portfolio_flutter/src/constants/enums.dart';
+import 'package:portfolio_flutter/src/logic/repositories/theme_repository.dart';
+
+import 'package:portfolio_flutter/src/utils/web_utils.dart';
+import '../../../constants/colors.dart';
+import '../../../models/page_data.dart';
+import '../../../utils/color_utils.dart';
 import '../home_page.dart';
+import '../home_page_model.dart';
 
 class CustomSideBar extends ConsumerStatefulWidget {
   const CustomSideBar({super.key});
@@ -15,10 +23,12 @@ class CustomSideBar extends ConsumerStatefulWidget {
 class _CustomSideBarState extends ConsumerState<CustomSideBar> {
   @override
   Widget build(BuildContext context) {
+    final selectedId =
+        ref.watch(homePageProvider.select((value) => value.selectedPage));
     return Container(
       width: 50,
       decoration: BoxDecoration(
-        color: const Color(0xff011627),
+        color: ColorUtils.getColor(ref, scaffoldColor),
         border: Border(
           right: BorderSide(color: Colors.grey.withOpacity(0.5), width: 0.3),
         ),
@@ -31,75 +41,74 @@ class _CustomSideBarState extends ConsumerState<CustomSideBar> {
           ),
           SideBarIcon(
             data: FontAwesomeIcons.file,
-            isActive: true,
+            isActive: selectedId == "1",
             onTap: () {
-              key.currentState?.openDrawer();
+              if (MediaQuery.sizeOf(context).width <= 600) {
+                key.currentState?.openDrawer();
+              } else {
+                ref.read(homePageProvider.notifier).addPage(const PageData(
+                      pageId: "1",
+                      pageName: "home.jsx",
+                      pageIcon: 'assets/images/react.png',
+                    ));
+              }
             },
           ),
           SideBarIcon(
             data: FontAwesomeIcons.github,
             isActive: false,
             onTap: () async {
-              // try {
-              //   await client.projects.addProjects(Projects(
-              //       projectName: "Portfolio-Web-App",
-              //       desc:
-              //           "This is a Flutter-based web application that serves as your personal project portfolio. It allows you to showcase your projects, skills, experience, and contact information. The app features both light and dark modes to enhance the user experience.",
-              //       liveDemo: "",
-              //       techStacks: [
-              //         "flutter",
-              //         "web-ui",
-              //         'serverpod',
-              //         'postgres',
-              //         'riverpod',
-              //       ],
-              //       sourceCode: "",
-              //       imageUrl: "",
-              //       isPublic: true,
-              //       googlePlay: "",
-              //       iosPlay: ""));
-              //   showSuccessMessage("all projects deleted");
-              // } catch (e) {
-              //   print(e.toString());
-              // }
+              openUrl('https://github.com/AyushKrSingh000');
             },
           ),
-          SideBarIcon(
-            data: FontAwesomeIcons.html5,
-            isActive: false,
-            onTap: () async {},
-          ),
+          // SideBarIcon(
+          //   data: FontAwesomeIcons.html5,
+          //   isActive: false,
+          //   onTap: () async {
+          //     showSuccessMessage("Coming Soon!");
+          //   },
+          // ),
           SideBarIcon(
             data: FontAwesomeIcons.pencilAlt,
             isActive: false,
-            onTap: () async {
-              try {
-                // await client.projects.
-              } catch (e) {}
+            onTap: () {
+              ref
+                  .read(themeRepositoryProvider.notifier)
+                  .setAppTheme(AppTheme.githubDark);
             },
           ),
           SideBarIcon(
             data: FontAwesomeIcons.envelope,
-            isActive: false,
-            onTap: () {},
+            isActive: selectedId == "3",
+            onTap: () {
+              ref.read(homePageProvider.notifier).addPage(const PageData(
+                    pageId: "3",
+                    pageName: "contact.css",
+                    pageIcon: 'assets/images/css.png',
+                  ));
+            },
           ),
           const Expanded(child: SizedBox()),
-          const Icon(
-            CupertinoIcons.person_alt_circle,
-            color: Colors.grey,
-            size: 32,
-          ),
-          const SizedBox(
-            height: 15,
-          ),
-          const Icon(
-            Icons.settings_outlined,
-            color: Colors.grey,
-            size: 32,
-          ),
-          const SizedBox(
-            height: 10,
-          )
+          SideBarIcon(
+              data: CupertinoIcons.person_alt_circle,
+              isActive: false,
+              iconSize: 32,
+              onTap: () {
+                ref.read(homePageProvider.notifier).addPage(const PageData(
+                    pageId: "1",
+                    pageName: "home.jsx",
+                    pageIcon: 'assets/images/react.png'));
+              }),
+          SideBarIcon(
+              data: Icons.settings_outlined,
+              isActive: false,
+              iconSize: 32,
+              onTap: () {
+                // ref.read(homePageProvider.notifier).addPage(const PageData(
+                //     pageId: "1",
+                //     pageName: "home.jsx",
+                //     pageIcon: 'assets/images/react.png'));
+              }),
         ],
       ),
     );
@@ -109,12 +118,14 @@ class _CustomSideBarState extends ConsumerState<CustomSideBar> {
 class SideBarIcon extends ConsumerWidget {
   final IconData data;
   final VoidCallback onTap;
+  final double iconSize;
   final bool isActive;
   const SideBarIcon({
     super.key,
     required this.data,
     required this.isActive,
     required this.onTap,
+    this.iconSize = 25,
   });
 
   @override
@@ -133,7 +144,7 @@ class SideBarIcon extends ConsumerWidget {
               child: Icon(
                 data,
                 color: !isActive ? Colors.grey : Colors.white,
-                size: 25,
+                size: iconSize,
               ),
             ),
           ),

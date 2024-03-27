@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:portfolio_flutter/src/utils/color_utils.dart';
 
 import '../../constants/colors.dart';
 
@@ -75,7 +76,7 @@ class _CustomTextFieldState extends ConsumerState<CustomTextField> {
                   widget.label,
                   style: GoogleFonts.poppins(
                     fontSize: 13,
-                    color: Colors.white.withOpacity(0.5),
+                    color: ColorUtils.getColor(ref, contactTextColor),
                     fontWeight: FontWeight.w500,
                   ),
                 ),
@@ -87,7 +88,7 @@ class _CustomTextFieldState extends ConsumerState<CustomTextField> {
         ),
         Container(
           decoration: BoxDecoration(
-            color: widget.backgroundColor,
+            color: ColorUtils.getColor(ref, textfieldBgColor),
             borderRadius: BorderRadius.circular(0),
           ),
           child: TextFormField(

@@ -5,6 +5,9 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:portfolio_flutter/src/models/page_data.dart';
 import 'package:portfolio_flutter/src/ui/home/home_page_model.dart';
 
+import '../../../constants/colors.dart';
+import '../../../utils/color_utils.dart';
+
 class ExplorerSection extends ConsumerStatefulWidget {
   const ExplorerSection({super.key});
 
@@ -20,7 +23,7 @@ class _ExplorerSectionState extends ConsumerState<ExplorerSection> {
     return Container(
       width: 200,
       decoration: BoxDecoration(
-        color: const Color(0xff011627),
+        color: ColorUtils.getColor(ref, explorerColor),
         border: Border(
           right: BorderSide(color: Colors.grey.withOpacity(0.5), width: 0.3),
         ),

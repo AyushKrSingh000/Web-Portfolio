@@ -2,8 +2,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:google_fonts/google_fonts.dart';
-
-import '../../constants/colors.dart';
+import 'package:portfolio_flutter/src/constants/colors.dart';
+import 'package:portfolio_flutter/src/utils/color_utils.dart';
 
 class CustomButton extends ConsumerStatefulWidget {
   final String text;
@@ -39,11 +39,13 @@ class _CustomButtonState extends ConsumerState<CustomButton> {
       onTap: widget.onTap,
       child: Container(
         decoration: BoxDecoration(
-          color: !widget.secondDesgin ? Colors.blue.withOpacity(0.4) : null,
+          color: !widget.secondDesgin
+              ? ColorUtils.getColor(ref, buttonColor)
+              : null,
           borderRadius: BorderRadius.circular(widget.borderRadius),
           border: widget.secondDesgin
               ? Border.all(
-                  color: buttonBorderColor.withOpacity(0.2),
+                  color: Colors.white.withOpacity(0.2),
                   width: 2,
                 )
               : null,

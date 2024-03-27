@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:portfolio_flutter/src/constants/colors.dart';
-import 'package:portfolio_flutter/src/utils/color_utils.dart';
 
 class CircleWidget extends StatelessWidget {
   final double width;
@@ -36,7 +34,7 @@ class CircleWidget extends StatelessWidget {
               height: innerRadius == 0 ? 0 : height * 0.45,
               width: innerRadius == 0 ? 0 : width * 0.45,
               decoration: BoxDecoration(
-                color: ColorUtils.getColor(context, scaffoldColor),
+                color: const Color(0xff011627),
                 borderRadius: BorderRadius.circular(innerRadius),
               ),
             ),

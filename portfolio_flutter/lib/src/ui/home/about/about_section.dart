@@ -6,6 +6,6 @@ class AboutSection extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    return Text('A Little About Me');
+    return const Text('A Little About Me');
   }
 }

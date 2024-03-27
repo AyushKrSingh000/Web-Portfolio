@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
 
-import 'color_utils.dart';
-
 /// shows a bottom sheet
 /// handles scenario of bottom sheet overlapping status bar
 Future<T?> showPortfolioBottomSheet<T>({
@@ -27,15 +25,9 @@ Future<T?> showPortfolioBottomSheet<T>({
         builder: (BuildContext context) {
           return Container(
             constraints: const BoxConstraints(maxWidth: 500),
-            decoration: BoxDecoration(
-              color: ColorUtils.getColor(
-                context,
-                const AppCustomColor(
-                  lightThemeColor: Colors.white,
-                  darkThemeColor: Color(0xff181818),
-                ),
-              ),
-              borderRadius: const BorderRadius.only(
+            decoration: const BoxDecoration(
+              color: Color(0xff181818),
+              borderRadius: BorderRadius.only(
                 topLeft: Radius.circular(10),
                 topRight: Radius.circular(10),
               ),

@@ -161,7 +161,7 @@ class _HomeSectionState extends ConsumerState<HomeSection> {
 }
 
 class _BuildLines extends ConsumerWidget {
-  const _BuildLines({super.key});
+  const _BuildLines();
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {

@@ -24,9 +24,7 @@ class ThemeRepository extends StateNotifier<AppTheme> {
   });
 
   setAppTheme(AppTheme appTheme) {
-    // save theme in preferences
     preferenceService.setInt(appThemePrefKey, appTheme.index);
-    // set the theme in state
     state = appTheme;
   }
 }

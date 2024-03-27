@@ -1,9 +1,11 @@
+// ignore: avoid_web_libraries_in_flutter
+import "dart:html" as html;
+
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:google_fonts/google_fonts.dart';
+
 import '../../../constants/colors.dart';
-import "dart:html" as html;
 import '../../../constants/constants.dart';
 import '../../../utils/color_utils.dart';
 
@@ -20,7 +22,7 @@ class _CustomTabBarState extends ConsumerState<CustomTabBar> {
   Widget build(BuildContext context) {
     return Container(
       decoration: BoxDecoration(
-        color: const Color(0xff011627),
+        color: ColorUtils.getColor(ref, scaffoldColor),
         border: Border(
           bottom: BorderSide(color: Colors.grey.withOpacity(0.5), width: 0.3),
         ),
@@ -73,8 +75,7 @@ class _CustomTabBarState extends ConsumerState<CustomTabBar> {
                     color: Colors.white.withOpacity(0.5),
                     width: 1.5,
                   ),
-                  color: ColorUtils.getColor(context, containerColor)
-                      .withOpacity(0.1),
+                  color: Colors.white.withOpacity(0.1),
                   borderRadius: BorderRadius.circular(8),
                 ),
                 child: const Row(

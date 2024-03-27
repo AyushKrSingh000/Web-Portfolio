@@ -1,19 +1,22 @@
-import 'package:auto_route/annotations.dart';
+// ignore: avoid_web_libraries_in_flutter
 import 'dart:html';
 import 'dart:ui_web' as ui2;
 
+import 'package:auto_route/annotations.dart';
 import 'package:flutter/material.dart';
-
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:portfolio_flutter/src/constants/colors.dart';
+import 'package:portfolio_flutter/src/logic/repositories/theme_repository.dart';
+
 import 'package:portfolio_flutter/src/ui/home/home_page_model.dart';
 import 'package:portfolio_flutter/src/ui/home/main_section/main_section.dart';
-import '../../constants/colors.dart';
+import 'package:portfolio_flutter/src/utils/color_utils.dart';
+
 import '../../constants/markdown_data.dart';
 import 'widgets/bottom_bar.dart';
 import 'widgets/explorer_section.dart';
 import 'widgets/side_bar.dart';
 import 'widgets/top_bar.dart';
-import '../../utils/color_utils.dart';
 
 final GlobalKey<ScaffoldState> key = GlobalKey<ScaffoldState>();
 
@@ -45,6 +48,7 @@ class _HomePageState extends ConsumerState<HomePage> {
   @override
   Widget build(BuildContext context) {
     ref.listen(homePageProvider, (previous, next) {});
+    ref.listen(themeRepositoryProvider, (prev, next) {});
     return SafeArea(
         child: Scaffold(
       key: key,
@@ -54,7 +58,7 @@ class _HomePageState extends ConsumerState<HomePage> {
               child: ExplorerSection(),
             )
           : null,
-      backgroundColor: ColorUtils.getColor(context, scaffoldColor),
+      backgroundColor: ColorUtils.getColor(ref, scaffoldColor),
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [

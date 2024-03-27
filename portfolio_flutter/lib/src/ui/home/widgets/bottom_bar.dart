@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:portfolio_flutter/src/constants/colors.dart';
+import 'package:portfolio_flutter/src/utils/color_utils.dart';
 
 class CustomBottomBar extends ConsumerWidget {
   const CustomBottomBar({super.key});
@@ -9,7 +11,7 @@ class CustomBottomBar extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     return Container(
       decoration: BoxDecoration(
-        color: const Color(0xff011627),
+        color: ColorUtils.getColor(ref, scaffoldColor),
         border: Border(
           top: BorderSide(color: Colors.grey.withOpacity(0.5), width: 0.3),
         ),

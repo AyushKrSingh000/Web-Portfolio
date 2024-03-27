@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:portfolio_flutter/src/constants/colors.dart';
 import 'package:portfolio_flutter/src/constants/strings.dart';
 import 'package:portfolio_flutter/src/ui/widgets/custom_button.dart';
 import 'package:portfolio_flutter/src/ui/widgets/custom_text_field.dart';
+import 'package:portfolio_flutter/src/utils/color_utils.dart';
 import 'package:portfolio_flutter/src/utils/web_utils.dart';
 
 class ContactSection extends ConsumerStatefulWidget {
@@ -52,6 +54,7 @@ class SocialsSection extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    final fontSize = MediaQuery.sizeOf(context).width < 450 ? 15 : 17;
     return Padding(
         padding: const EdgeInsets.all(30.0),
         child: Column(
@@ -63,7 +66,7 @@ class SocialsSection extends ConsumerWidget {
               style: GoogleFonts.poppins(
                   fontWeight: FontWeight.w600,
                   fontSize: 20,
-                  color: const Color(0xff89a4bb)),
+                  color: ColorUtils.getColor(ref, contactTextColor)),
             ),
             const SizedBox(height: 30),
             Row(
@@ -71,9 +74,11 @@ class SocialsSection extends ConsumerWidget {
                 Text(
                   "1",
                   style: GoogleFonts.poppins(
-                      fontWeight: FontWeight.w600,
-                      fontSize: 18,
-                      color: const Color(0xff89a4bb).withOpacity(0.3)),
+                    fontWeight: FontWeight.w600,
+                    fontSize: fontSize + 1,
+                    color: ColorUtils.getColor(ref, contactTextColor)
+                        .withOpacity(0.5),
+                  ),
                 ),
                 const SizedBox(
                   width: 10,
@@ -83,7 +88,7 @@ class SocialsSection extends ConsumerWidget {
                   style: GoogleFonts.poppins(
                       fontWeight: FontWeight.w400,
                       fontSize: 17,
-                      color: const Color(0xff89a4bb)),
+                      color: ColorUtils.getColor(ref, contactTextColor)),
                 )
               ],
             ),
@@ -93,11 +98,12 @@ class SocialsSection extends ConsumerWidget {
                 child: Wrap(
                   children: [
                     Text(
-                      (i + 1).toString(),
+                      (i + 2).toString(),
                       style: GoogleFonts.poppins(
                           fontWeight: FontWeight.w600,
-                          fontSize: 18,
-                          color: const Color(0xff89a4bb).withOpacity(0.3)),
+                          fontSize: fontSize + 0,
+                          color: ColorUtils.getColor(ref, contactTextColor)
+                              .withOpacity(0.5)),
                     ),
                     const SizedBox(
                       width: 40,
@@ -106,8 +112,8 @@ class SocialsSection extends ConsumerWidget {
                       "${socials.keys.toList()[i]} : ",
                       style: GoogleFonts.poppins(
                           fontWeight: FontWeight.w400,
-                          fontSize: 18,
-                          color: const Color(0xff89a4bb)),
+                          fontSize: fontSize + 1,
+                          color: ColorUtils.getColor(ref, contactTextColor)),
                     ),
                     const SizedBox(
                       width: 10,
@@ -126,10 +132,10 @@ class SocialsSection extends ConsumerWidget {
                             .first,
                         style: GoogleFonts.poppins(
                           fontWeight: FontWeight.w400,
-                          decoration: TextDecoration.underline,
-                          decorationColor: Colors.white.withOpacity(0.4),
-                          fontSize: 17,
-                          color: Colors.white.withOpacity(0.4),
+                          // decoration: TextDecoration.underline,
+                          // decorationColor: Colors.white,
+                          fontSize: fontSize + 0,
+                          color: ColorUtils.getColor(ref, contactTextLinkColor),
                         ),
                       ),
                     ),
@@ -139,11 +145,12 @@ class SocialsSection extends ConsumerWidget {
             Row(
               children: [
                 Text(
-                  "6",
+                  "8",
                   style: GoogleFonts.poppins(
                       fontWeight: FontWeight.w600,
-                      fontSize: 18,
-                      color: const Color(0xff89a4bb).withOpacity(0.3)),
+                      fontSize: fontSize + 0,
+                      color: ColorUtils.getColor(ref, contactTextColor)
+                          .withOpacity(0.5)),
                 ),
                 const SizedBox(
                   width: 10,
@@ -152,8 +159,8 @@ class SocialsSection extends ConsumerWidget {
                   "}",
                   style: GoogleFonts.poppins(
                       fontWeight: FontWeight.w400,
-                      fontSize: 18,
-                      color: const Color(0xff89a4bb)),
+                      fontSize: fontSize + 1,
+                      color: ColorUtils.getColor(ref, contactTextColor)),
                 )
               ],
             )
@@ -177,7 +184,7 @@ class ContactUsForm extends ConsumerWidget {
             style: GoogleFonts.poppins(
                 fontWeight: FontWeight.w600,
                 fontSize: 20,
-                color: const Color(0xff89a4bb)),
+                color: ColorUtils.getColor(ref, contactTextColor)),
           ),
           const SizedBox(height: 30),
           if (MediaQuery.sizeOf(context).width > 800) ...[

@@ -1,6 +1,10 @@
+// ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'dart:math';
 
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:portfolio_flutter/src/constants/enums.dart';
+import 'package:portfolio_flutter/src/logic/repositories/theme_repository.dart';
 
 abstract class ColorUtils {
   static MaterialColor generateMaterialColor(Color color) {
@@ -37,22 +41,45 @@ abstract class ColorUtils {
       1);
 
   /// returns light theme or dark theme color based on the theme
-  static Color getColor(BuildContext context, AppCustomColor color) {
-    return Theme.of(context).brightness == Brightness.dark
-        ? color.darkThemeColor ??
-            color
-                .lightThemeColor // returns light theme color, if dark theme color is null
-        : color.lightThemeColor;
+  static Color getColor(WidgetRef ref, AppCustomColor color) {
+    final appTheme = ref.watch(
+        themeRepositoryProvider.select((appTheme) => appTheme as AppTheme));
+    switch (appTheme) {
+      case AppTheme.darkVSCode:
+        return color.darkVsCode;
+      case AppTheme.ayuDark:
+        return color.ayuDark;
+      case AppTheme.dracula:
+        return color.dracula;
+      case AppTheme.githubDark:
+        return color.githubDark;
+      case AppTheme.lightVSCode:
+        return color.lightVSCode;
+      case AppTheme.xcodeModern:
+        return color.xcodeModern;
+      default:
+        return color.nightOwl;
+    }
   }
 }
 
 /// models light theme and dark theme colors
 class AppCustomColor {
-  final Color lightThemeColor;
-  final Color? darkThemeColor;
+  final Color githubDark;
+  final Color dracula;
+  final Color ayuDark;
+  final Color nightOwl;
+  final Color xcodeModern;
+  final Color lightVSCode;
+  final Color darkVsCode;
 
   const AppCustomColor({
-    required this.lightThemeColor,
-    this.darkThemeColor,
+    required this.githubDark,
+    required this.dracula,
+    required this.ayuDark,
+    required this.nightOwl,
+    required this.xcodeModern,
+    required this.lightVSCode,
+    required this.darkVsCode,
   });
 }
