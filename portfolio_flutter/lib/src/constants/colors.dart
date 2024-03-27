@@ -38,11 +38,11 @@ const mainTopBarColor = AppCustomColor(
     lightVSCode: Color(0xff011627),
     darkVsCode: Color(0xff011627));
 
-const textfieldBgColor = AppCustomColor(
+final textfieldBgColor = AppCustomColor(
     githubDark: Color(0xff1f2428),
     dracula: Color(0xff011627),
     ayuDark: Color(0xff011627),
-    nightOwl: Color(0xff011627),
+    nightOwl: Colors.white.withOpacity(0.2),
     xcodeModern: Color(0xff011627),
     lightVSCode: Color(0xff011627),
     darkVsCode: Color(0xff011627));
@@ -55,11 +55,11 @@ const projectBgColor = AppCustomColor(
     xcodeModern: Color(0xff011627),
     lightVSCode: Color(0xff011627),
     darkVsCode: Color(0xff011627));
-const contactTextLinkColor = AppCustomColor(
+final contactTextLinkColor = AppCustomColor(
     githubDark: Color(0xfff9826c),
     dracula: Color(0xff011627),
     ayuDark: Color(0xff011627),
-    nightOwl: Color(0xff011627),
+    nightOwl: Color(0xff89a4bb),
     xcodeModern: Color(0xff011627),
     lightVSCode: Color(0xff011627),
     darkVsCode: Color(0xff011627));
@@ -67,7 +67,7 @@ final contactTextColor = AppCustomColor(
     githubDark: Colors.white,
     dracula: Color(0xff011627),
     ayuDark: Color(0xff011627),
-    nightOwl: Color(0xff89a4bb).withOpacity(0.4),
+    nightOwl: Colors.white.withOpacity(0.7),
     xcodeModern: Color(0xff011627),
     lightVSCode: Color(0xff011627),
     darkVsCode: Color(0xff011627));
