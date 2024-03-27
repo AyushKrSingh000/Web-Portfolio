@@ -1,5 +1,7 @@
 import 'package:serverpod/serverpod.dart';
 
+import '../generated/projects.dart';
+
 // Future calls are calls that will be invoked at a later time. An example is if
 // you want to send a drip-email campaign after a user signs up. You can
 // schedule a future call for a day, a week, or a month. The calls are stored in
@@ -11,9 +13,10 @@ import 'package:serverpod/serverpod.dart';
 //  methods. You can optionally pass a serializable object together with the
 //  call.
 
-class ExampleFutureCall extends FutureCall {
+class ContactFutureCall extends FutureCall<Projects> {
   @override
-  Future<void> invoke(Session session, SerializableEntity? object) async {
-    // Do something interesting in the future here.
+  Future<void> invoke(Session session, Projects? object) async {
+    print(object);
+    print("hello");
   }
 }

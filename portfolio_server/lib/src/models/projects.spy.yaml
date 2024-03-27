@@ -1,0 +1,12 @@
+class: Projects
+table: projects
+fields:
+  projectName: String
+  desc: String
+  imageUrl: String
+  techStacks: List<String>
+  sourceCode: String
+  liveDemo: String
+  isPublic: bool
+  googlePlay: String
+  iosPlay: String

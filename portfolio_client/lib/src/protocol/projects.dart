@@ -20,6 +20,8 @@ abstract class Projects extends _i1.SerializableEntity {
     required this.sourceCode,
     required this.liveDemo,
     required this.isPublic,
+    required this.googlePlay,
+    required this.iosPlay,
   });
 
   factory Projects({
@@ -31,6 +33,8 @@ abstract class Projects extends _i1.SerializableEntity {
     required String sourceCode,
     required String liveDemo,
     required bool isPublic,
+    required String googlePlay,
+    required String iosPlay,
   }) = _ProjectsImpl;
 
   factory Projects.fromJson(
@@ -52,6 +56,10 @@ abstract class Projects extends _i1.SerializableEntity {
           .deserialize<String>(jsonSerialization['liveDemo']),
       isPublic:
           serializationManager.deserialize<bool>(jsonSerialization['isPublic']),
+      googlePlay: serializationManager
+          .deserialize<String>(jsonSerialization['googlePlay']),
+      iosPlay: serializationManager
+          .deserialize<String>(jsonSerialization['iosPlay']),
     );
   }
 
@@ -74,6 +82,10 @@ abstract class Projects extends _i1.SerializableEntity {
 
   bool isPublic;
 
+  String googlePlay;
+
+  String iosPlay;
+
   Projects copyWith({
     int? id,
     String? projectName,
@@ -83,6 +95,8 @@ abstract class Projects extends _i1.SerializableEntity {
     String? sourceCode,
     String? liveDemo,
     bool? isPublic,
+    String? googlePlay,
+    String? iosPlay,
   });
   @override
   Map<String, dynamic> toJson() {
@@ -95,6 +109,8 @@ abstract class Projects extends _i1.SerializableEntity {
       'sourceCode': sourceCode,
       'liveDemo': liveDemo,
       'isPublic': isPublic,
+      'googlePlay': googlePlay,
+      'iosPlay': iosPlay,
     };
   }
 }
@@ -111,6 +127,8 @@ class _ProjectsImpl extends Projects {
     required String sourceCode,
     required String liveDemo,
     required bool isPublic,
+    required String googlePlay,
+    required String iosPlay,
   }) : super._(
           id: id,
           projectName: projectName,
@@ -120,6 +138,8 @@ class _ProjectsImpl extends Projects {
           sourceCode: sourceCode,
           liveDemo: liveDemo,
           isPublic: isPublic,
+          googlePlay: googlePlay,
+          iosPlay: iosPlay,
         );
 
   @override
@@ -132,6 +152,8 @@ class _ProjectsImpl extends Projects {
     String? sourceCode,
     String? liveDemo,
     bool? isPublic,
+    String? googlePlay,
+    String? iosPlay,
   }) {
     return Projects(
       id: id is int? ? id : this.id,
@@ -142,6 +164,8 @@ class _ProjectsImpl extends Projects {
       sourceCode: sourceCode ?? this.sourceCode,
       liveDemo: liveDemo ?? this.liveDemo,
       isPublic: isPublic ?? this.isPublic,
+      googlePlay: googlePlay ?? this.googlePlay,
+      iosPlay: iosPlay ?? this.iosPlay,
     );
   }
 }

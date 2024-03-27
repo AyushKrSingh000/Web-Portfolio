@@ -3,8 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:portfolio_client/portfolio_client.dart';
-import 'package:portfolio_flutter/main.dart';
-import 'package:portfolio_flutter/src/utils/snackbar_utils.dart';
 import '../home_page.dart';
 
 class CustomSideBar extends ConsumerStatefulWidget {
@@ -42,36 +40,43 @@ class _CustomSideBarState extends ConsumerState<CustomSideBar> {
             data: FontAwesomeIcons.github,
             isActive: false,
             onTap: () async {
-              final project = Projects(
-                id: 3,
-                projectName: "saturnalia app",
-                desc: "sdjhbs",
-                isPublic: true,
-                imageUrl: "",
-                sourceCode: "",
-                techStacks: ["dfgbsdfjg", 'jfdshgjkbfdjkg'],
-                liveDemo: "",
-              );
-              try {
-                final res = await client.projects.addProjects(project);
-                if (res == true) {
-                  showSuccessMessage(context, "done");
-                }
-              } catch (e) {
-                showErrorMessage(context, e.toString());
-              }
-              // key.currentState?.openDrawer();
+              // try {
+              //   await client.projects.addProjects(Projects(
+              //       projectName: "Portfolio-Web-App",
+              //       desc:
+              //           "This is a Flutter-based web application that serves as your personal project portfolio. It allows you to showcase your projects, skills, experience, and contact information. The app features both light and dark modes to enhance the user experience.",
+              //       liveDemo: "",
+              //       techStacks: [
+              //         "flutter",
+              //         "web-ui",
+              //         'serverpod',
+              //         'postgres',
+              //         'riverpod',
+              //       ],
+              //       sourceCode: "",
+              //       imageUrl: "",
+              //       isPublic: true,
+              //       googlePlay: "",
+              //       iosPlay: ""));
+              //   showSuccessMessage("all projects deleted");
+              // } catch (e) {
+              //   print(e.toString());
+              // }
             },
           ),
           SideBarIcon(
             data: FontAwesomeIcons.html5,
             isActive: false,
-            onTap: () {},
+            onTap: () async {},
           ),
           SideBarIcon(
             data: FontAwesomeIcons.pencilAlt,
             isActive: false,
-            onTap: () {},
+            onTap: () async {
+              try {
+                // await client.projects.
+              } catch (e) {}
+            },
           ),
           SideBarIcon(
             data: FontAwesomeIcons.envelope,

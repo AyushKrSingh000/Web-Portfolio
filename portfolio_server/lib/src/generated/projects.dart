@@ -21,6 +21,8 @@ abstract class Projects extends _i1.TableRow {
     required this.sourceCode,
     required this.liveDemo,
     required this.isPublic,
+    required this.googlePlay,
+    required this.iosPlay,
   }) : super(id);
 
   factory Projects({
@@ -32,6 +34,8 @@ abstract class Projects extends _i1.TableRow {
     required String sourceCode,
     required String liveDemo,
     required bool isPublic,
+    required String googlePlay,
+    required String iosPlay,
   }) = _ProjectsImpl;
 
   factory Projects.fromJson(
@@ -53,6 +57,10 @@ abstract class Projects extends _i1.TableRow {
           .deserialize<String>(jsonSerialization['liveDemo']),
       isPublic:
           serializationManager.deserialize<bool>(jsonSerialization['isPublic']),
+      googlePlay: serializationManager
+          .deserialize<String>(jsonSerialization['googlePlay']),
+      iosPlay: serializationManager
+          .deserialize<String>(jsonSerialization['iosPlay']),
     );
   }
 
@@ -74,6 +82,10 @@ abstract class Projects extends _i1.TableRow {
 
   bool isPublic;
 
+  String googlePlay;
+
+  String iosPlay;
+
   @override
   _i1.Table get table => t;
 
@@ -86,6 +98,8 @@ abstract class Projects extends _i1.TableRow {
     String? sourceCode,
     String? liveDemo,
     bool? isPublic,
+    String? googlePlay,
+    String? iosPlay,
   });
   @override
   Map<String, dynamic> toJson() {
@@ -98,6 +112,8 @@ abstract class Projects extends _i1.TableRow {
       'sourceCode': sourceCode,
       'liveDemo': liveDemo,
       'isPublic': isPublic,
+      'googlePlay': googlePlay,
+      'iosPlay': iosPlay,
     };
   }
 
@@ -113,6 +129,8 @@ abstract class Projects extends _i1.TableRow {
       'sourceCode': sourceCode,
       'liveDemo': liveDemo,
       'isPublic': isPublic,
+      'googlePlay': googlePlay,
+      'iosPlay': iosPlay,
     };
   }
 
@@ -127,6 +145,8 @@ abstract class Projects extends _i1.TableRow {
       'sourceCode': sourceCode,
       'liveDemo': liveDemo,
       'isPublic': isPublic,
+      'googlePlay': googlePlay,
+      'iosPlay': iosPlay,
     };
   }
 
@@ -160,6 +180,12 @@ abstract class Projects extends _i1.TableRow {
         return;
       case 'isPublic':
         isPublic = value;
+        return;
+      case 'googlePlay':
+        googlePlay = value;
+        return;
+      case 'iosPlay':
+        iosPlay = value;
         return;
       default:
         throw UnimplementedError();
@@ -320,6 +346,8 @@ class _ProjectsImpl extends Projects {
     required String sourceCode,
     required String liveDemo,
     required bool isPublic,
+    required String googlePlay,
+    required String iosPlay,
   }) : super._(
           id: id,
           projectName: projectName,
@@ -329,6 +357,8 @@ class _ProjectsImpl extends Projects {
           sourceCode: sourceCode,
           liveDemo: liveDemo,
           isPublic: isPublic,
+          googlePlay: googlePlay,
+          iosPlay: iosPlay,
         );
 
   @override
@@ -341,6 +371,8 @@ class _ProjectsImpl extends Projects {
     String? sourceCode,
     String? liveDemo,
     bool? isPublic,
+    String? googlePlay,
+    String? iosPlay,
   }) {
     return Projects(
       id: id is int? ? id : this.id,
@@ -351,6 +383,8 @@ class _ProjectsImpl extends Projects {
       sourceCode: sourceCode ?? this.sourceCode,
       liveDemo: liveDemo ?? this.liveDemo,
       isPublic: isPublic ?? this.isPublic,
+      googlePlay: googlePlay ?? this.googlePlay,
+      iosPlay: iosPlay ?? this.iosPlay,
     );
   }
 }
@@ -385,6 +419,14 @@ class ProjectsTable extends _i1.Table {
       'isPublic',
       this,
     );
+    googlePlay = _i1.ColumnString(
+      'googlePlay',
+      this,
+    );
+    iosPlay = _i1.ColumnString(
+      'iosPlay',
+      this,
+    );
   }
 
   late final _i1.ColumnString projectName;
@@ -401,6 +443,10 @@ class ProjectsTable extends _i1.Table {
 
   late final _i1.ColumnBool isPublic;
 
+  late final _i1.ColumnString googlePlay;
+
+  late final _i1.ColumnString iosPlay;
+
   @override
   List<_i1.Column> get columns => [
         id,
@@ -411,6 +457,8 @@ class ProjectsTable extends _i1.Table {
         sourceCode,
         liveDemo,
         isPublic,
+        googlePlay,
+        iosPlay,
       ];
 }
 

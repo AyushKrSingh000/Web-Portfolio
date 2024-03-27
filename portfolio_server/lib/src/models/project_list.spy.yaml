@@ -1,0 +1,3 @@
+class: ProjectList
+fields:
+  projects: List<Projects>

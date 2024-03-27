@@ -1,5 +1,7 @@
-example:
-  - hello:
+contactUs:
+  - sendContactdetails:
 projects:
   - getProjects:
   - addProjects:
+  - deleteProject:
+  - deleteAllProjects:

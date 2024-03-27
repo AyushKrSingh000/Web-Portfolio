@@ -10,20 +10,22 @@
 // ignore_for_file: no_leading_underscores_for_library_prefixes
 import 'package:serverpod_client/serverpod_client.dart' as _i1;
 import 'dart:async' as _i2;
-import 'package:portfolio_client/src/protocol/articles.dart' as _i3;
-import 'protocol.dart' as _i4;
+import 'package:portfolio_client/src/protocol/contacts.dart' as _i3;
+import 'package:portfolio_client/src/protocol/projects.dart' as _i4;
+import 'protocol.dart' as _i5;
 
 /// {@category Endpoint}
-class EndpointExample extends _i1.EndpointRef {
-  EndpointExample(_i1.EndpointCaller caller) : super(caller);
+class EndpointContactUs extends _i1.EndpointRef {
+  EndpointContactUs(_i1.EndpointCaller caller) : super(caller);
 
   @override
-  String get name => 'example';
+  String get name => 'contactUs';
 
-  _i2.Future<String> hello(String name) => caller.callServerEndpoint<String>(
-        'example',
-        'hello',
-        {'name': name},
+  _i2.Future<bool> sendContactdetails(_i3.Contacts contactData) =>
+      caller.callServerEndpoint<bool>(
+        'contactUs',
+        'sendContactdetails',
+        {'contactData': contactData},
       );
 }
 
@@ -34,18 +36,31 @@ class EndpointProjects extends _i1.EndpointRef {
   @override
   String get name => 'projects';
 
-  _i2.Future<List<_i3.Projects>> getProjects() =>
-      caller.callServerEndpoint<List<_i3.Projects>>(
+  _i2.Future<List<_i4.Projects>> getProjects() =>
+      caller.callServerEndpoint<List<_i4.Projects>>(
         'projects',
         'getProjects',
         {},
       );
 
-  _i2.Future<bool> addProjects(_i3.Projects projects) =>
+  _i2.Future<bool> addProjects(_i4.Projects projects) =>
       caller.callServerEndpoint<bool>(
         'projects',
         'addProjects',
         {'projects': projects},
+      );
+
+  _i2.Future<bool> deleteProject(int projectId) =>
+      caller.callServerEndpoint<bool>(
+        'projects',
+        'deleteProject',
+        {'projectId': projectId},
+      );
+
+  _i2.Future<bool> deleteAllProjects() => caller.callServerEndpoint<bool>(
+        'projects',
+        'deleteAllProjects',
+        {},
       );
 }
 
@@ -58,23 +73,23 @@ class Client extends _i1.ServerpodClient {
     Duration? connectionTimeout,
   }) : super(
           host,
-          _i4.Protocol(),
+          _i5.Protocol(),
           securityContext: securityContext,
           authenticationKeyManager: authenticationKeyManager,
           streamingConnectionTimeout: streamingConnectionTimeout,
           connectionTimeout: connectionTimeout,
         ) {
-    example = EndpointExample(this);
+    contactUs = EndpointContactUs(this);
     projects = EndpointProjects(this);
   }
 
-  late final EndpointExample example;
+  late final EndpointContactUs contactUs;
 
   late final EndpointProjects projects;
 
   @override
   Map<String, _i1.EndpointRef> get endpointRefLookup => {
-        'example': example,
+        'contactUs': contactUs,
         'projects': projects,
       };
 

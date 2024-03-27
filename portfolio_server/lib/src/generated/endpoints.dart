@@ -9,18 +9,19 @@
 
 // ignore_for_file: no_leading_underscores_for_library_prefixes
 import 'package:serverpod/serverpod.dart' as _i1;
-import '../endpoints/example_endpoint.dart' as _i2;
+import '../endpoints/contact_us_endpoint.dart' as _i2;
 import '../endpoints/projects_endpoint.dart' as _i3;
-import 'package:portfolio_server/src/generated/articles.dart' as _i4;
+import 'package:portfolio_server/src/generated/contacts.dart' as _i4;
+import 'package:portfolio_server/src/generated/projects.dart' as _i5;
 
 class Endpoints extends _i1.EndpointDispatch {
   @override
   void initializeEndpoints(_i1.Server server) {
     var endpoints = <String, _i1.Endpoint>{
-      'example': _i2.ExampleEndpoint()
+      'contactUs': _i2.ContactUsEndpoint()
         ..initialize(
           server,
-          'example',
+          'contactUs',
           null,
         ),
       'projects': _i3.ProjectsEndpoint()
@@ -30,16 +31,16 @@ class Endpoints extends _i1.EndpointDispatch {
           null,
         ),
     };
-    connectors['example'] = _i1.EndpointConnector(
-      name: 'example',
-      endpoint: endpoints['example']!,
+    connectors['contactUs'] = _i1.EndpointConnector(
+      name: 'contactUs',
+      endpoint: endpoints['contactUs']!,
       methodConnectors: {
-        'hello': _i1.MethodConnector(
-          name: 'hello',
+        'sendContactdetails': _i1.MethodConnector(
+          name: 'sendContactdetails',
           params: {
-            'name': _i1.ParameterDescription(
-              name: 'name',
-              type: _i1.getType<String>(),
+            'contactData': _i1.ParameterDescription(
+              name: 'contactData',
+              type: _i1.getType<_i4.Contacts>(),
               nullable: false,
             )
           },
@@ -47,9 +48,10 @@ class Endpoints extends _i1.EndpointDispatch {
             _i1.Session session,
             Map<String, dynamic> params,
           ) async =>
-              (endpoints['example'] as _i2.ExampleEndpoint).hello(
+              (endpoints['contactUs'] as _i2.ContactUsEndpoint)
+                  .sendContactdetails(
             session,
-            params['name'],
+            params['contactData'],
           ),
         )
       },
@@ -73,7 +75,7 @@ class Endpoints extends _i1.EndpointDispatch {
           params: {
             'projects': _i1.ParameterDescription(
               name: 'projects',
-              type: _i1.getType<_i4.Projects>(),
+              type: _i1.getType<_i5.Projects>(),
               nullable: false,
             )
           },
@@ -85,6 +87,34 @@ class Endpoints extends _i1.EndpointDispatch {
             session,
             params['projects'],
           ),
+        ),
+        'deleteProject': _i1.MethodConnector(
+          name: 'deleteProject',
+          params: {
+            'projectId': _i1.ParameterDescription(
+              name: 'projectId',
+              type: _i1.getType<int>(),
+              nullable: false,
+            )
+          },
+          call: (
+            _i1.Session session,
+            Map<String, dynamic> params,
+          ) async =>
+              (endpoints['projects'] as _i3.ProjectsEndpoint).deleteProject(
+            session,
+            params['projectId'],
+          ),
+        ),
+        'deleteAllProjects': _i1.MethodConnector(
+          name: 'deleteAllProjects',
+          params: {},
+          call: (
+            _i1.Session session,
+            Map<String, dynamic> params,
+          ) async =>
+              (endpoints['projects'] as _i3.ProjectsEndpoint)
+                  .deleteAllProjects(session),
         ),
       },
     );

@@ -1,3 +1,4 @@
+import 'package:portfolio_server/src/future_calls/contact_future_call.dart';
 import 'package:serverpod/serverpod.dart';
 
 import 'package:portfolio_server/src/web/routes/root.dart';
@@ -19,7 +20,7 @@ void run(List<String> args) async {
 
   // If you are using any future calls, they need to be registered here.
   // pod.registerFutureCall(ExampleFutureCall(), 'exampleFutureCall');
-
+  pod.registerFutureCall(ContactFutureCall(), 'mail');
   // Setup a default page at the web root.
   pod.webServer.addRoute(RouteRoot(), '/');
   pod.webServer.addRoute(RouteRoot(), '/index.html');

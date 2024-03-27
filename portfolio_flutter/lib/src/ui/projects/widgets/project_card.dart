@@ -1,11 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:google_fonts/google_fonts.dart';
-
-import '../../../models/project_data.dart';
+import 'package:portfolio_client/portfolio_client.dart';
 
 class ProjectCard extends ConsumerWidget {
-  final ProjectData data;
+  final Projects data;
   const ProjectCard({
     super.key,
     required this.data,

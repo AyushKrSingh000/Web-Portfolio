@@ -1,5 +1,7 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:portfolio_client/portfolio_client.dart';
+import 'package:portfolio_flutter/main.dart';
 import 'package:portfolio_flutter/src/models/page_data.dart';
 
 part 'home_page_model.freezed.dart';
@@ -34,6 +36,27 @@ class HomePageModel extends StateNotifier<HomePageState> {
                 : datas[newIndex].pageId
             : state.selectedPage);
   }
+
+  Future<String> fetchProjects() async {
+    state =
+        state.copyWith(projectStatus: ProjectStatus.loading, projectErrMsg: "");
+    try {
+      final res = await client.projects.getProjects();
+      state = state.copyWith(
+          projects: res,
+          projectErrMsg: "",
+          projectStatus: ProjectStatus.loaded);
+      return "";
+    } on Exception catch (e) {
+      state = state.copyWith(
+          projectStatus: ProjectStatus.error, projectErrMsg: e.toString());
+      return e.toString();
+    } catch (e) {
+      state = state.copyWith(
+          projectStatus: ProjectStatus.error, projectErrMsg: e.toString());
+      return e.toString();
+    }
+  }
 }
 
 @freezed
@@ -42,12 +65,15 @@ class HomePageState with _$HomePageState {
     @Default(HomePageStatus.initial) HomePageStatus status,
     @Default([
       PageData(
-          pageId: "4",
-          pageName: 'project.js',
-          pageIcon: "assets/images/javascript.png")
+          pageId: "1",
+          pageName: 'home.jsx',
+          pageIcon: "assets/images/react.png")
     ])
     List<PageData> pages,
-    @Default("4") String selectedPage,
+    @Default(null) List<Projects>? projects,
+    @Default(ProjectStatus.initial) ProjectStatus projectStatus,
+    @Default("") String projectErrMsg,
+    @Default("1") String selectedPage,
   }) = _HomePageState;
 }
 
@@ -56,4 +82,12 @@ enum HomePageStatus {
   loading,
   loaded,
   error,
+}
+
+enum ProjectStatus {
+  initial,
+  loading,
+  loaded,
+  error;
+  // final bool canBuildForAndroid;
 }
