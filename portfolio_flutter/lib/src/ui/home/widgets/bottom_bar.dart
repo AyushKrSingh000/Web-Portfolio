@@ -11,9 +11,10 @@ class CustomBottomBar extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     return Container(
       decoration: BoxDecoration(
-        color: ColorUtils.getColor(ref, scaffoldColor),
+        color: ColorUtils.getColor(ref, explorerColor),
         border: Border(
-          top: BorderSide(color: Colors.grey.withOpacity(0.5), width: 0.3),
+          top: BorderSide(
+              color: ColorUtils.getColor(ref, dividerColor), width: 0.3),
         ),
       ),
       height: 25,

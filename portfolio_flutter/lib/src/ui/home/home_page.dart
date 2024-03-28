@@ -6,6 +6,7 @@ import 'package:auto_route/annotations.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:portfolio_flutter/src/constants/colors.dart';
+import 'package:portfolio_flutter/src/constants/enums.dart';
 import 'package:portfolio_flutter/src/logic/repositories/theme_repository.dart';
 
 import 'package:portfolio_flutter/src/ui/home/home_page_model.dart';
@@ -34,21 +35,57 @@ class _HomePageState extends ConsumerState<HomePage> {
   @override
   void initState() {
     super.initState();
-
-    dta.registerViewFactory(
-      'webpage',
-      (int viewId) => IFrameElement()
-        ..srcdoc = getHtmlString(context)
-        ..style.width = "100%"
-        ..style.height = "100%"
-        ..style.border = 'none',
-    );
+    Future.delayed(Duration.zero, () {
+      final appTheme =
+          ref.read(themeRepositoryProvider.select((value) => value));
+      if (appTheme == AppTheme.lightVSCode) {
+        dta.registerViewFactory(
+          'webpage',
+          (int viewId) => IFrameElement()
+            ..srcdoc = lightModeMarkdown
+            ..style.width = "100%"
+            ..style.height = "100%"
+            ..style.border = 'none',
+        );
+      } else {
+        dta.registerViewFactory(
+          'webpage',
+          (int viewId) => IFrameElement()
+            ..srcdoc = darkModeMarkdown
+            ..style.width = "100%"
+            ..style.height = "100%"
+            ..style.border = 'none',
+        );
+      }
+      ref.listen(themeRepositoryProvider, (previous, next) {
+        if (next == AppTheme.lightVSCode) {
+          dta.registerViewFactory(
+            'webpage',
+            (int viewId) => IFrameElement()
+              ..srcdoc = lightModeMarkdown
+              ..style.width = "100%"
+              ..style.height = "100%"
+              ..style.border = 'none',
+          );
+        } else {
+          dta.registerViewFactory(
+            'webpage',
+            (int viewId) => IFrameElement()
+              ..srcdoc = darkModeMarkdown
+              ..style.width = "100%"
+              ..style.height = "100%"
+              ..style.border = 'none',
+          );
+        }
+      });
+    });
   }
 
   @override
   Widget build(BuildContext context) {
     ref.listen(homePageProvider, (previous, next) {});
     ref.listen(themeRepositoryProvider, (prev, next) {});
+
     return SafeArea(
         child: Scaffold(
       key: key,

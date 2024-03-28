@@ -3,6 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:portfolio_flutter/src/constants/colors.dart';
+import 'package:portfolio_flutter/src/constants/enums.dart';
+import 'package:portfolio_flutter/src/logic/repositories/theme_repository.dart';
 import 'package:portfolio_flutter/src/utils/color_utils.dart';
 
 class CustomButton extends ConsumerStatefulWidget {
@@ -35,6 +37,9 @@ class CustomButton extends ConsumerStatefulWidget {
 class _CustomButtonState extends ConsumerState<CustomButton> {
   @override
   Widget build(BuildContext context) {
+    final appTheme =
+        ref.watch(themeRepositoryProvider.select((value) => value)) ==
+            AppTheme.lightVSCode;
     return InkWell(
       onTap: widget.onTap,
       child: Container(
@@ -45,7 +50,7 @@ class _CustomButtonState extends ConsumerState<CustomButton> {
           borderRadius: BorderRadius.circular(widget.borderRadius),
           border: widget.secondDesgin
               ? Border.all(
-                  color: Colors.white.withOpacity(0.2),
+                  color: ColorUtils.getColor(ref, buttonColor),
                   width: 2,
                 )
               : null,
@@ -54,12 +59,12 @@ class _CustomButtonState extends ConsumerState<CustomButton> {
         width: widget.width,
         child: Center(
           child: widget.isProcessing
-              ? const Center(
+              ? Center(
                   child: SizedBox(
                     height: 25,
                     width: 25,
                     child: CircularProgressIndicator(
-                      color: Colors.white,
+                      color: appTheme ? Colors.black : Colors.white,
                       strokeWidth: 2,
                     ),
                   ),
@@ -72,7 +77,7 @@ class _CustomButtonState extends ConsumerState<CustomButton> {
                       textAlign: TextAlign.center,
                       style: GoogleFonts.montserrat(
                         fontSize: widget.fontSize,
-                        color: Colors.white,
+                        color: appTheme ? Colors.black : Colors.white,
                         fontWeight: widget.fontWeight,
                       ),
                     ),

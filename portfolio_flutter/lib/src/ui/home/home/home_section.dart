@@ -5,6 +5,8 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:portfolio_flutter/src/ui/widgets/circle_widget.dart';
 import 'package:portfolio_flutter/src/ui/widgets/custom_button.dart';
 
+import '../../../constants/enums.dart';
+import '../../../logic/repositories/theme_repository.dart';
 import '../../../models/page_data.dart';
 import '../home_page_model.dart';
 
@@ -18,6 +20,9 @@ class HomeSection extends ConsumerStatefulWidget {
 class _HomeSectionState extends ConsumerState<HomeSection> {
   @override
   Widget build(BuildContext context) {
+    final appTheme =
+        ref.watch(themeRepositoryProvider.select((value) => value)) ==
+            AppTheme.lightVSCode;
     return Stack(
       children: [
         const _BuildLines(),
@@ -40,22 +45,8 @@ class _HomeSectionState extends ConsumerState<HomeSection> {
             height: 50,
             outerRadius: 50,
             innerRadius: 0,
-            circleColor: Colors.white.withOpacity(0.4),
-          ),
-        ),
-        Positioned(
-          top: MediaQuery.sizeOf(context).height * 0.15,
-          left: (MediaQuery.sizeOf(context).width - 300) * .70,
-          child: CircleWidget(
-            width: 300,
-            height: 300,
-            outerRadius: 300,
-            innerRadius: 0,
-            circleColor: Colors.white.withOpacity(0.3),
-            child: Image.asset(
-              'assets/images/ayush.png',
-              height: 300,
-            ),
+            circleColor:
+                appTheme ? Colors.grey.shade200 : Colors.white.withOpacity(0.4),
           ),
         ),
         Positioned(
@@ -66,7 +57,9 @@ class _HomeSectionState extends ConsumerState<HomeSection> {
               style: GoogleFonts.poppins(
                 fontSize: 250 * MediaQuery.of(context).size.aspectRatio / 2,
                 height: -1,
-                color: Colors.white.withOpacity(0.05),
+                color: appTheme
+                    ? Colors.grey.shade200
+                    : Colors.white.withOpacity(0.05),
                 fontWeight: FontWeight.w500,
               ),
             ),
@@ -80,9 +73,27 @@ class _HomeSectionState extends ConsumerState<HomeSection> {
               style: GoogleFonts.poppins(
                 fontSize: 150 * MediaQuery.of(context).size.aspectRatio / 1.5,
                 height: 0,
-                color: Colors.white.withOpacity(0.05),
+                color: appTheme
+                    ? Colors.grey.shade200
+                    : Colors.white.withOpacity(0.05),
                 fontWeight: FontWeight.w500,
               ),
+            ),
+          ),
+        ),
+        Positioned(
+          top: MediaQuery.sizeOf(context).height * 0.15,
+          left: (MediaQuery.sizeOf(context).width - 300) * .70,
+          child: CircleWidget(
+            width: 300,
+            height: 300,
+            outerRadius: 300,
+            innerRadius: 0,
+            circleColor:
+                appTheme ? Colors.grey.shade200 : Colors.white.withOpacity(0.3),
+            child: Image.asset(
+              'assets/images/ayush.png',
+              height: 300,
             ),
           ),
         ),

@@ -28,9 +28,10 @@ class _CustomSideBarState extends ConsumerState<CustomSideBar> {
     return Container(
       width: 50,
       decoration: BoxDecoration(
-        color: ColorUtils.getColor(ref, scaffoldColor),
+        color: ColorUtils.getColor(ref, sideBarColor),
         border: Border(
-          right: BorderSide(color: Colors.grey.withOpacity(0.5), width: 0.3),
+          right: BorderSide(
+              color: ColorUtils.getColor(ref, dividerColor), width: 0.3),
         ),
       ),
       child: Column(
@@ -74,7 +75,7 @@ class _CustomSideBarState extends ConsumerState<CustomSideBar> {
             onTap: () {
               ref
                   .read(themeRepositoryProvider.notifier)
-                  .setAppTheme(AppTheme.githubDark);
+                  .setAppTheme(AppTheme.lightVSCode);
             },
           ),
           SideBarIcon(
@@ -130,6 +131,9 @@ class SideBarIcon extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    final appTheme =
+        ref.watch(themeRepositoryProvider.select((value) => value)) ==
+            AppTheme.lightVSCode;
     return Stack(
       alignment: Alignment.centerLeft,
       children: [
@@ -140,10 +144,16 @@ class SideBarIcon extends ConsumerWidget {
             color: Colors.transparent,
             child: InkWell(
               onTap: onTap,
-              hoverColor: Colors.white.withOpacity(0.2),
+              hoverColor: appTheme
+                  ? Colors.grey.shade200
+                  : Colors.white.withOpacity(0.2),
               child: Icon(
                 data,
-                color: !isActive ? Colors.grey : Colors.white,
+                color: !isActive
+                    ? Colors.grey
+                    : appTheme
+                        ? Colors.black
+                        : Colors.white,
                 size: iconSize,
               ),
             ),
@@ -153,7 +163,7 @@ class SideBarIcon extends ConsumerWidget {
           Container(
             height: 35,
             width: 2,
-            color: Colors.white,
+            color: appTheme ? Colors.black : Colors.white,
           ),
       ],
     );

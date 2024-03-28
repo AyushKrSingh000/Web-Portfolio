@@ -25,7 +25,8 @@ class _ExplorerSectionState extends ConsumerState<ExplorerSection> {
       decoration: BoxDecoration(
         color: ColorUtils.getColor(ref, explorerColor),
         border: Border(
-          right: BorderSide(color: Colors.grey.withOpacity(0.5), width: 0.3),
+          right: BorderSide(
+              color: ColorUtils.getColor(ref, dividerColor), width: 0.3),
         ),
       ),
       child: Padding(
@@ -208,7 +209,7 @@ class FileNameSection extends ConsumerWidget {
             fileName,
             style: GoogleFonts.poppins(
               fontSize: 13.5,
-              color: Colors.white.withOpacity(0.7),
+              color: ColorUtils.getColor(ref, explorerTextColor),
             ),
           )
         ],

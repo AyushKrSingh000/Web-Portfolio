@@ -7,6 +7,8 @@ import 'package:google_fonts/google_fonts.dart';
 
 import '../../../constants/colors.dart';
 import '../../../constants/constants.dart';
+import '../../../constants/enums.dart';
+import '../../../logic/repositories/theme_repository.dart';
 import '../../../utils/color_utils.dart';
 
 class CustomTabBar extends ConsumerStatefulWidget {
@@ -18,13 +20,18 @@ class CustomTabBar extends ConsumerStatefulWidget {
 
 class _CustomTabBarState extends ConsumerState<CustomTabBar> {
   bool isFullScreen = false;
+
   @override
   Widget build(BuildContext context) {
+    final appTheme =
+        ref.watch(themeRepositoryProvider.select((value) => value)) ==
+            AppTheme.lightVSCode;
     return Container(
       decoration: BoxDecoration(
-        color: ColorUtils.getColor(ref, scaffoldColor),
+        color: ColorUtils.getColor(ref, topBarColor),
         border: Border(
-          bottom: BorderSide(color: Colors.grey.withOpacity(0.5), width: 0.3),
+          bottom: BorderSide(
+              color: ColorUtils.getColor(ref, dividerColor), width: 0.3),
         ),
       ),
       height: 35,
@@ -72,10 +79,14 @@ class _CustomTabBarState extends ConsumerState<CustomTabBar> {
                 width: 300,
                 decoration: BoxDecoration(
                   border: Border.all(
-                    color: Colors.white.withOpacity(0.5),
+                    color: appTheme
+                        ? Colors.grey.shade400
+                        : Colors.white.withOpacity(0.5),
                     width: 1.5,
                   ),
-                  color: Colors.white.withOpacity(0.1),
+                  color: appTheme
+                      ? Colors.grey.shade300
+                      : Colors.white.withOpacity(0.1),
                   borderRadius: BorderRadius.circular(8),
                 ),
                 child: const Row(

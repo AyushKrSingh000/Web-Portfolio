@@ -3,6 +3,8 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:portfolio_flutter/src/constants/colors.dart';
 import 'package:portfolio_flutter/src/ui/home/home_page_model.dart';
 
+import '../../../constants/enums.dart';
+import '../../../logic/repositories/theme_repository.dart';
 import '../../../utils/color_utils.dart';
 
 class MainTopBar extends ConsumerStatefulWidget {
@@ -19,6 +21,9 @@ class _MainTopBarState extends ConsumerState<MainTopBar> {
     final pages = ref.watch(homePageProvider.select((value) => value.pages));
     final pageId =
         ref.watch(homePageProvider.select((value) => value.selectedPage));
+    final appTheme =
+        ref.watch(themeRepositoryProvider.select((value) => value)) ==
+            AppTheme.lightVSCode;
     return SizedBox(
       height: 40,
       child: RawScrollbar(
@@ -42,11 +47,11 @@ class _MainTopBarState extends ConsumerState<MainTopBar> {
                         border: Border(
                           right: BorderSide(
                             width: 0.5,
-                            color: Colors.white.withOpacity(0.5),
+                            color: ColorUtils.getColor(ref, dividerColor),
                           ),
                           bottom: BorderSide(
                             width: 0.7,
-                            color: Colors.white.withOpacity(0.7),
+                            color: ColorUtils.getColor(ref, dividerColor),
                           ),
                         ),
                       ),
@@ -75,7 +80,9 @@ class _MainTopBarState extends ConsumerState<MainTopBar> {
                               child: Icon(
                                 Icons.close,
                                 size: 18,
-                                color: Colors.white.withOpacity(0.6),
+                                color: appTheme
+                                    ? Colors.grey.shade500
+                                    : Colors.white.withOpacity(0.6),
                               ),
                             ),
                           ],

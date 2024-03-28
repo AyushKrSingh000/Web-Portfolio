@@ -69,7 +69,7 @@ class ProjectCard extends ConsumerWidget {
                               decoration: BoxDecoration(
                                 borderRadius: BorderRadius.circular(10),
                                 border: Border.all(
-                                  color: Colors.white,
+                                  color: ColorUtils.getColor(ref, buttonColor),
                                   width: 0.7,
                                 ),
                               ),
@@ -81,7 +81,7 @@ class ProjectCard extends ConsumerWidget {
                                   style: GoogleFonts.poppins(
                                     fontSize: 11,
                                     fontWeight: FontWeight.w300,
-                                    color: Colors.white,
+                                    // color:  Colors.white,
                                   ),
                                 ),
                               ),
@@ -107,7 +107,7 @@ class ProjectCard extends ConsumerWidget {
                               fontSize: 13,
                               fontWeight: FontWeight.w300,
                               decoration: TextDecoration.underline,
-                              color: Colors.white,
+                              // color: Colors.white,
                             ),
                           ),
                         ),
@@ -120,7 +120,7 @@ class ProjectCard extends ConsumerWidget {
                               fontSize: 13,
                               fontWeight: FontWeight.w300,
                               decoration: TextDecoration.underline,
-                              color: Colors.white,
+                              // color: Colors.white,
                             ),
                           ),
                         ),
