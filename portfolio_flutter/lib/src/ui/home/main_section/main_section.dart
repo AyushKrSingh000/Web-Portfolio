@@ -7,7 +7,9 @@ import 'package:portfolio_flutter/src/ui/home/github/github_section.dart';
 import 'package:portfolio_flutter/src/ui/home/home/home_section.dart';
 import 'package:portfolio_flutter/src/ui/home/home_page_model.dart';
 import 'package:portfolio_flutter/src/ui/home/main_section/main_top_bar.dart';
-import 'package:portfolio_flutter/src/ui/projects/projects_section.dart';
+import 'package:portfolio_flutter/src/ui/home/projects/projects_section.dart';
+
+import '../theme/theme_section.dart';
 
 class MainSection extends ConsumerStatefulWidget {
   const MainSection({super.key});
@@ -43,6 +45,7 @@ class ViewScreen extends ConsumerWidget {
     if (pageId == "4") return const ProjectsSection();
     if (pageId == "5") return const ArticlesSection();
     if (pageId == "6") return const GitHubSection();
+    if (pageId == "7") return const ThemeSection();
     return const SizedBox();
   }
 }

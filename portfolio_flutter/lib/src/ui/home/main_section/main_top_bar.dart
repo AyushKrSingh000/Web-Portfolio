@@ -82,7 +82,7 @@ class _MainTopBarState extends ConsumerState<MainTopBar> {
                                 size: 18,
                                 color: appTheme
                                     ? Colors.grey.shade500
-                                    : Colors.white.withOpacity(0.6),
+                                    : ColorUtils.getColor(ref, buttonColor),
                               ),
                             ),
                           ],

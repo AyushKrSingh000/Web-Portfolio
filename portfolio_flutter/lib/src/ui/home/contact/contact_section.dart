@@ -8,6 +8,9 @@ import 'package:portfolio_flutter/src/ui/widgets/custom_text_field.dart';
 import 'package:portfolio_flutter/src/utils/color_utils.dart';
 import 'package:portfolio_flutter/src/utils/web_utils.dart';
 
+import '../../../constants/enums.dart';
+import '../../../logic/repositories/theme_repository.dart';
+
 class ContactSection extends ConsumerStatefulWidget {
   const ContactSection({super.key});
 
@@ -18,6 +21,9 @@ class ContactSection extends ConsumerStatefulWidget {
 class _ContactSectionState extends ConsumerState<ContactSection> {
   @override
   Widget build(BuildContext context) {
+    final appTheme =
+        ref.watch(themeRepositoryProvider.select((value) => value)) ==
+            AppTheme.lightVSCode;
     return MediaQuery.sizeOf(context).width > 1100
         ? Row(
             children: [
@@ -29,7 +35,7 @@ class _ContactSectionState extends ConsumerState<ContactSection> {
                 padding: const EdgeInsets.only(bottom: 50),
                 child: VerticalDivider(
                   width: 0.2,
-                  color: Colors.white.withOpacity(0.5),
+                  color: appTheme ? Colors.grey : Colors.white.withOpacity(0.5),
                 ),
               ),
               const Expanded(

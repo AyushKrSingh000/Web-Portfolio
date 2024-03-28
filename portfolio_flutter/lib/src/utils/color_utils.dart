@@ -45,8 +45,8 @@ abstract class ColorUtils {
     final appTheme = ref.watch(
         themeRepositoryProvider.select((appTheme) => appTheme as AppTheme));
     switch (appTheme) {
-      case AppTheme.darkVSCode:
-        return color.darkVsCode;
+      case AppTheme.dobriNext:
+        return color.dobriNext;
       case AppTheme.ayuDark:
         return color.ayuDark;
       case AppTheme.dracula:
@@ -55,8 +55,8 @@ abstract class ColorUtils {
         return color.githubDark;
       case AppTheme.lightVSCode:
         return color.lightVSCode;
-      case AppTheme.xcodeModern:
-        return color.xcodeModern;
+      case AppTheme.solarisedDark:
+        return color.solarisedDark;
       default:
         return color.nightOwl;
     }
@@ -69,17 +69,17 @@ class AppCustomColor {
   final Color dracula;
   final Color ayuDark;
   final Color nightOwl;
-  final Color xcodeModern;
+  final Color solarisedDark;
   final Color lightVSCode;
-  final Color darkVsCode;
+  final Color dobriNext;
 
   const AppCustomColor({
     required this.githubDark,
     required this.dracula,
     required this.ayuDark,
     required this.nightOwl,
-    required this.xcodeModern,
+    required this.solarisedDark,
     required this.lightVSCode,
-    required this.darkVsCode,
+    required this.dobriNext,
   });
 }

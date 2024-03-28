@@ -6,6 +6,8 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:portfolio_flutter/src/utils/color_utils.dart';
 
 import '../../constants/colors.dart';
+import '../../constants/enums.dart';
+import '../../logic/repositories/theme_repository.dart';
 
 class CustomTextField extends ConsumerStatefulWidget {
   final String label;
@@ -64,6 +66,9 @@ class _CustomTextFieldState extends ConsumerState<CustomTextField> {
 
   @override
   Widget build(BuildContext context) {
+    final appTheme =
+        ref.watch(themeRepositoryProvider.select((value) => value)) ==
+            AppTheme.lightVSCode;
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -100,7 +105,7 @@ class _CustomTextFieldState extends ConsumerState<CustomTextField> {
             onChanged: widget.onChanged,
             maxLength: widget.maxLength,
             obscureText: widget.hideText,
-            cursorColor: Colors.white,
+            cursorColor: appTheme ? Colors.black : Colors.white,
             scrollPadding: const EdgeInsets.only(bottom: 200),
             keyboardType: widget.isDigitOnly
                 ? const TextInputType.numberWithOptions(decimal: false)
@@ -121,8 +126,8 @@ class _CustomTextFieldState extends ConsumerState<CustomTextField> {
                   const OutlineInputBorder(borderSide: BorderSide.none),
               focusedBorder: OutlineInputBorder(
                 borderRadius: BorderRadius.circular(0),
-                borderSide: const BorderSide(
-                  color: Colors.white,
+                borderSide: BorderSide(
+                  color: appTheme ? Colors.black : Colors.white,
                   width: 0.5,
                 ),
               ),

@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-import '../home/home_page_model.dart';
-import '../widgets/custom_button.dart';
+import '../../../constants/enums.dart';
+import '../../../logic/repositories/theme_repository.dart';
+import '../home_page_model.dart';
+import '../../widgets/custom_button.dart';
 import 'widgets/project_card.dart';
 
 class ProjectsSection extends ConsumerStatefulWidget {
@@ -29,6 +31,9 @@ class _ProjectsSectionState extends ConsumerState<ProjectsSection> {
         ref.watch(homePageProvider.select((value) => value.projectStatus));
     final projects =
         ref.watch(homePageProvider.select((value) => value.projects));
+    final appTheme =
+        ref.watch(themeRepositoryProvider.select((value) => value)) ==
+            AppTheme.lightVSCode;
     return projectStatus == ProjectStatus.loaded && projects != null
         ? RawScrollbar(
             controller: _scrollController,
@@ -52,9 +57,9 @@ class _ProjectsSectionState extends ConsumerState<ProjectsSection> {
           )
         : projectStatus == ProjectStatus.initial ||
                 projectStatus == ProjectStatus.loading
-            ? const Center(
+            ? Center(
                 child: CircularProgressIndicator(
-                  color: Colors.white,
+                  color: appTheme ? Colors.green : Colors.white,
                 ),
               )
             : Center(

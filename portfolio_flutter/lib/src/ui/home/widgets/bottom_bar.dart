@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:portfolio_flutter/src/constants/colors.dart';
 import 'package:portfolio_flutter/src/utils/color_utils.dart';
@@ -22,7 +23,7 @@ class CustomBottomBar extends ConsumerWidget {
       child: Row(
         children: [
           const Icon(
-            Icons.gite_outlined,
+            FontAwesomeIcons.gitAlt,
             color: Colors.grey,
             size: 18,
           ),
