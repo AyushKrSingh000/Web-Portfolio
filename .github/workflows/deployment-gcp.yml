@@ -19,7 +19,7 @@ env:
   # it here too.
   PROJECT: "portfolio-server-418713"
   REGION: asia-south1
-  ZONE: us-central1-c
+  ZONE: asia-south1-c
 
 jobs:
   deploy:
