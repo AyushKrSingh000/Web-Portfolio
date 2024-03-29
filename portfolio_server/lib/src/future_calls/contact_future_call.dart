@@ -18,21 +18,21 @@ class ContactFutureCall extends FutureCall<Contacts> {
   @override
   Future<void> invoke(Session session, Contacts? data) async {
     try {
-      String username = 'oyusflutterdev@gmail.com';
-      String password = "";
-      final smtpServer = gmail(username, password);
-      final equivalentMessage = Message()
-        ..from = Address(username, 'Your name 😀')
-        ..recipients
-            .add(Address(data?.email ?? "ayushkumarsingh0708@gmail.com"))
-        ..subject = 'Test Dart Mailer library :: 😀 :: ${DateTime.now()}'
-        ..text = ' This is the plain text.\nThis is line 2 of the text part.'
-        ..html =
-            '<h1>Dear${data?.name}</h1>\n<p>Hey! Here is some HTML content</p>/>';
-      var connection = PersistentConnection(smtpServer);
+      // String username = 'oyusflutterdev@gmail.com';
+      // String password = "";
+      // final smtpServer = gmail(username, password);
+      // final equivalentMessage = Message()
+      //   ..from = Address(username, 'Your name 😀')
+      //   ..recipients
+      //       .add(Address(data?.email ?? "ayushkumarsingh0708@gmail.com"))
+      //   ..subject = 'Test Dart Mailer library :: 😀 :: ${DateTime.now()}'
+      //   ..text = ' This is the plain text.\nThis is line 2 of the text part.'
+      //   ..html =
+      //       '<h1>Dear${data?.name}</h1>\n<p>Hey! Here is some HTML content</p>/>';
+      // var connection = PersistentConnection(smtpServer);
 
-      await connection.send(equivalentMessage);
-      await connection.close();
+      // await connection.send(equivalentMessage);
+      // await connection.close();
     } catch (e) {
       session.log(e.toString());
     }
