@@ -4,25 +4,25 @@ import 'package:fluttertoast/fluttertoast.dart';
 
 showSuccessMessage(String message) => _showToast(
       message,
-      Colors.black,
+      "green",
     );
 
 showErrorMessage(String message) => _showToast(
       message,
-      Colors.red,
+      'red',
       toastLength: message.length > 80 ? Toast.LENGTH_LONG : Toast.LENGTH_SHORT,
     );
 
 _showToast(
   String message,
-  Color backgroundColor, {
+  String backgroundColor, {
   Toast? toastLength,
 }) {
   Fluttertoast.showToast(
     msg: message,
-    textColor: const Color(0xff011627),
-    webBgColor: "white",
-    backgroundColor: backgroundColor,
+    textColor: Colors.white,
+    webBgColor: backgroundColor,
+    // backgroundColor: r,
     toastLength: Toast.LENGTH_LONG,
   );
 }

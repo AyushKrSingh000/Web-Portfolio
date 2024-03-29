@@ -37,6 +37,48 @@ class HomePageModel extends StateNotifier<HomePageState> {
             : state.selectedPage);
   }
 
+  setName(String name) => state = state.copyWith(name: name);
+  setEmail(String name) => state = state.copyWith(email: name);
+  setSubject(String name) => state = state.copyWith(subject: name);
+  setDesc(String name) => state = state.copyWith(content: name);
+  sendContactDetails() async {
+    if (state.name.trim().isEmpty) {
+      return "Please enter your name";
+    }
+    if (state.email.trim().isEmpty) {
+      return 'Please enter email';
+    }
+    if (!state.email.contains("@")) {
+      return 'Please enter valid email';
+    }
+    if (state.subject.trim().isEmpty) {
+      return "Please enter subject";
+    }
+    if (state.content.trim().isEmpty) {
+      return "Please enter message";
+    }
+    try {
+      await client.contactUs.sendContactdetails(
+        Contacts(
+          contactId: '123',
+          name: state.name,
+          email: state.email,
+          subject: state.subject,
+          content: state.content,
+          contactDate: DateTime.now(),
+        ),
+      );
+      if (mounted) {
+        state = state.copyWith(name: "", email: "", subject: "", content: "");
+      }
+      return "";
+    } on Exception catch (e) {
+      return e.toString();
+    } catch (e) {
+      return e.toString();
+    }
+  }
+
   Future<String> fetchProjects() async {
     state =
         state.copyWith(projectStatus: ProjectStatus.loading, projectErrMsg: "");
@@ -73,6 +115,10 @@ class HomePageState with _$HomePageState {
     @Default(null) List<Projects>? projects,
     @Default(ProjectStatus.initial) ProjectStatus projectStatus,
     @Default("") String projectErrMsg,
+    @Default("") String name,
+    @Default('') String email,
+    @Default('') String subject,
+    @Default('') String content,
     @Default("1") String selectedPage,
   }) = _HomePageState;
 }

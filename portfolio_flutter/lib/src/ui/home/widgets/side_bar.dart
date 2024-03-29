@@ -72,11 +72,7 @@ class _CustomSideBarState extends ConsumerState<CustomSideBar> {
           SideBarIcon(
             data: FontAwesomeIcons.pencilAlt,
             isActive: false,
-            onTap: () {
-              ref
-                  .read(themeRepositoryProvider.notifier)
-                  .setAppTheme(AppTheme.lightVSCode);
-            },
+            onTap: () async {},
           ),
           SideBarIcon(
             data: FontAwesomeIcons.envelope,

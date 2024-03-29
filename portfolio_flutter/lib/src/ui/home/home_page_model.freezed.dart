@@ -21,6 +21,10 @@ mixin _$HomePageState {
   List<Projects>? get projects => throw _privateConstructorUsedError;
   ProjectStatus get projectStatus => throw _privateConstructorUsedError;
   String get projectErrMsg => throw _privateConstructorUsedError;
+  String get name => throw _privateConstructorUsedError;
+  String get email => throw _privateConstructorUsedError;
+  String get subject => throw _privateConstructorUsedError;
+  String get content => throw _privateConstructorUsedError;
   String get selectedPage => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
@@ -40,6 +44,10 @@ abstract class $HomePageStateCopyWith<$Res> {
       List<Projects>? projects,
       ProjectStatus projectStatus,
       String projectErrMsg,
+      String name,
+      String email,
+      String subject,
+      String content,
       String selectedPage});
 }
 
@@ -61,6 +69,10 @@ class _$HomePageStateCopyWithImpl<$Res, $Val extends HomePageState>
     Object? projects = freezed,
     Object? projectStatus = null,
     Object? projectErrMsg = null,
+    Object? name = null,
+    Object? email = null,
+    Object? subject = null,
+    Object? content = null,
     Object? selectedPage = null,
   }) {
     return _then(_value.copyWith(
@@ -84,6 +96,22 @@ class _$HomePageStateCopyWithImpl<$Res, $Val extends HomePageState>
           ? _value.projectErrMsg
           : projectErrMsg // ignore: cast_nullable_to_non_nullable
               as String,
+      name: null == name
+          ? _value.name
+          : name // ignore: cast_nullable_to_non_nullable
+              as String,
+      email: null == email
+          ? _value.email
+          : email // ignore: cast_nullable_to_non_nullable
+              as String,
+      subject: null == subject
+          ? _value.subject
+          : subject // ignore: cast_nullable_to_non_nullable
+              as String,
+      content: null == content
+          ? _value.content
+          : content // ignore: cast_nullable_to_non_nullable
+              as String,
       selectedPage: null == selectedPage
           ? _value.selectedPage
           : selectedPage // ignore: cast_nullable_to_non_nullable
@@ -106,6 +134,10 @@ abstract class _$$HomePageStateImplCopyWith<$Res>
       List<Projects>? projects,
       ProjectStatus projectStatus,
       String projectErrMsg,
+      String name,
+      String email,
+      String subject,
+      String content,
       String selectedPage});
 }
 
@@ -125,6 +157,10 @@ class __$$HomePageStateImplCopyWithImpl<$Res>
     Object? projects = freezed,
     Object? projectStatus = null,
     Object? projectErrMsg = null,
+    Object? name = null,
+    Object? email = null,
+    Object? subject = null,
+    Object? content = null,
     Object? selectedPage = null,
   }) {
     return _then(_$HomePageStateImpl(
@@ -148,6 +184,22 @@ class __$$HomePageStateImplCopyWithImpl<$Res>
           ? _value.projectErrMsg
           : projectErrMsg // ignore: cast_nullable_to_non_nullable
               as String,
+      name: null == name
+          ? _value.name
+          : name // ignore: cast_nullable_to_non_nullable
+              as String,
+      email: null == email
+          ? _value.email
+          : email // ignore: cast_nullable_to_non_nullable
+              as String,
+      subject: null == subject
+          ? _value.subject
+          : subject // ignore: cast_nullable_to_non_nullable
+              as String,
+      content: null == content
+          ? _value.content
+          : content // ignore: cast_nullable_to_non_nullable
+              as String,
       selectedPage: null == selectedPage
           ? _value.selectedPage
           : selectedPage // ignore: cast_nullable_to_non_nullable
@@ -170,6 +222,10 @@ class _$HomePageStateImpl implements _HomePageState {
       final List<Projects>? projects = null,
       this.projectStatus = ProjectStatus.initial,
       this.projectErrMsg = "",
+      this.name = "",
+      this.email = '',
+      this.subject = '',
+      this.content = '',
       this.selectedPage = "1"})
       : _pages = pages,
         _projects = projects;
@@ -205,11 +261,23 @@ class _$HomePageStateImpl implements _HomePageState {
   final String projectErrMsg;
   @override
   @JsonKey()
+  final String name;
+  @override
+  @JsonKey()
+  final String email;
+  @override
+  @JsonKey()
+  final String subject;
+  @override
+  @JsonKey()
+  final String content;
+  @override
+  @JsonKey()
   final String selectedPage;
 
   @override
   String toString() {
-    return 'HomePageState(status: $status, pages: $pages, projects: $projects, projectStatus: $projectStatus, projectErrMsg: $projectErrMsg, selectedPage: $selectedPage)';
+    return 'HomePageState(status: $status, pages: $pages, projects: $projects, projectStatus: $projectStatus, projectErrMsg: $projectErrMsg, name: $name, email: $email, subject: $subject, content: $content, selectedPage: $selectedPage)';
   }
 
   @override
@@ -224,6 +292,10 @@ class _$HomePageStateImpl implements _HomePageState {
                 other.projectStatus == projectStatus) &&
             (identical(other.projectErrMsg, projectErrMsg) ||
                 other.projectErrMsg == projectErrMsg) &&
+            (identical(other.name, name) || other.name == name) &&
+            (identical(other.email, email) || other.email == email) &&
+            (identical(other.subject, subject) || other.subject == subject) &&
+            (identical(other.content, content) || other.content == content) &&
             (identical(other.selectedPage, selectedPage) ||
                 other.selectedPage == selectedPage));
   }
@@ -236,6 +308,10 @@ class _$HomePageStateImpl implements _HomePageState {
       const DeepCollectionEquality().hash(_projects),
       projectStatus,
       projectErrMsg,
+      name,
+      email,
+      subject,
+      content,
       selectedPage);
 
   @JsonKey(ignore: true)
@@ -252,6 +328,10 @@ abstract class _HomePageState implements HomePageState {
       final List<Projects>? projects,
       final ProjectStatus projectStatus,
       final String projectErrMsg,
+      final String name,
+      final String email,
+      final String subject,
+      final String content,
       final String selectedPage}) = _$HomePageStateImpl;
 
   @override
@@ -264,6 +344,14 @@ abstract class _HomePageState implements HomePageState {
   ProjectStatus get projectStatus;
   @override
   String get projectErrMsg;
+  @override
+  String get name;
+  @override
+  String get email;
+  @override
+  String get subject;
+  @override
+  String get content;
   @override
   String get selectedPage;
   @override

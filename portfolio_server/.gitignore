@@ -10,3 +10,4 @@ doc/api/
 .env
 # Passwords file
 config/passwords.yaml
+config/passwords.dart

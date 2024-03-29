@@ -3,9 +3,11 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:portfolio_flutter/src/constants/colors.dart';
 import 'package:portfolio_flutter/src/constants/strings.dart';
+import 'package:portfolio_flutter/src/ui/home/home_page_model.dart';
 import 'package:portfolio_flutter/src/ui/widgets/custom_button.dart';
 import 'package:portfolio_flutter/src/ui/widgets/custom_text_field.dart';
 import 'package:portfolio_flutter/src/utils/color_utils.dart';
+import 'package:portfolio_flutter/src/utils/toast_utils.dart';
 import 'package:portfolio_flutter/src/utils/web_utils.dart';
 
 import '../../../constants/enums.dart';
@@ -175,11 +177,17 @@ class SocialsSection extends ConsumerWidget {
   }
 }
 
-class ContactUsForm extends ConsumerWidget {
+class ContactUsForm extends ConsumerStatefulWidget {
   const ContactUsForm({super.key});
 
   @override
-  Widget build(BuildContext context, WidgetRef ref) {
+  ConsumerState<ConsumerStatefulWidget> createState() => _ContactUsFormState();
+}
+
+class _ContactUsFormState extends ConsumerState<ContactUsForm> {
+  bool isProcessing = false;
+  @override
+  Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.all(30.0),
       child: Column(
@@ -200,18 +208,24 @@ class ContactUsForm extends ConsumerWidget {
                   child: CustomTextField(
                       label: 'Name',
                       hintText: "",
-                      initialText: "",
+                      initialText: ref
+                          .read(homePageProvider.select((value) => value.name)),
                       maxLength: 30,
-                      onChanged: (value) {}),
+                      onChanged: (value) {
+                        ref.read(homePageProvider.notifier).setName(value);
+                      }),
                 ),
                 const SizedBox(width: 15),
                 Expanded(
                   child: CustomTextField(
                       label: 'Email',
                       hintText: "",
-                      initialText: "",
+                      initialText: ref.read(
+                          homePageProvider.select((value) => value.email)),
                       maxLength: 30,
-                      onChanged: (value) {}),
+                      onChanged: (value) {
+                        ref.read(homePageProvider.notifier).setEmail(value);
+                      }),
                 ),
               ],
             ),
@@ -219,16 +233,22 @@ class ContactUsForm extends ConsumerWidget {
             CustomTextField(
                 label: 'Name',
                 hintText: "",
-                initialText: "",
+                initialText:
+                    ref.read(homePageProvider.select((value) => value.name)),
                 maxLength: 30,
-                onChanged: (value) {}),
+                onChanged: (value) {
+                  ref.read(homePageProvider.notifier).setName(value);
+                }),
             const SizedBox(height: 20),
             CustomTextField(
                 label: 'Email',
                 hintText: "",
-                initialText: "",
+                initialText:
+                    ref.read(homePageProvider.select((value) => value.email)),
                 maxLength: 30,
-                onChanged: (value) {}),
+                onChanged: (value) {
+                  ref.read(homePageProvider.notifier).setEmail(value);
+                }),
           ],
           const SizedBox(
             height: 20,
@@ -236,19 +256,25 @@ class ContactUsForm extends ConsumerWidget {
           CustomTextField(
               label: 'Subject',
               hintText: "",
-              initialText: "",
+              initialText:
+                  ref.read(homePageProvider.select((value) => value.subject)),
               maxLength: 30,
-              onChanged: (value) {}),
+              onChanged: (value) {
+                ref.read(homePageProvider.notifier).setSubject(value);
+              }),
           const SizedBox(
             height: 20,
           ),
           CustomTextField(
               label: 'Message',
               hintText: "",
-              initialText: "",
+              initialText:
+                  ref.read(homePageProvider.select((value) => value.content)),
               maxLength: 200,
               maxlines: 5,
-              onChanged: (value) {}),
+              onChanged: (value) {
+                ref.read(homePageProvider.notifier).setDesc(value);
+              }),
           const SizedBox(
             height: 20,
           ),
@@ -258,7 +284,28 @@ class ContactUsForm extends ConsumerWidget {
               borderRadius: 0,
               width: 100,
               fontSize: 14,
-              onTap: () {},
+              onTap: () async {
+                if (!isProcessing) {
+                  if (mounted) {
+                    setState(() {
+                      isProcessing = true;
+                    });
+                  }
+                  final res = await ref
+                      .read(homePageProvider.notifier)
+                      .sendContactDetails();
+                  if (res != "") {
+                    showErrorMessage(res);
+                  } else {
+                    showSuccessMessage('Message Sent Successfully');
+                  }
+                  if (mounted) {
+                    setState(() {
+                      isProcessing = false;
+                    });
+                  }
+                }
+              },
               isProcessing: false),
         ],
       ),
