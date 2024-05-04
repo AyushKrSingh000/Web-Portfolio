@@ -2,7 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:portfolio_client/portfolio_client.dart';
+
 import 'package:portfolio_flutter/src/constants/enums.dart';
 import 'package:portfolio_flutter/src/logic/repositories/theme_repository.dart';
 

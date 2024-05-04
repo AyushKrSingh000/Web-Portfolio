@@ -4,9 +4,6 @@ import '../src/logic/preference_service.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import 'src/app.dart';
-import 'package:portfolio_client/portfolio_client.dart';
-
-
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();

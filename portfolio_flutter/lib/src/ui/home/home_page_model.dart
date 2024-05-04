@@ -1,7 +1,6 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:portfolio_client/portfolio_client.dart';
-import 'package:portfolio_flutter/main.dart';
+
 import 'package:portfolio_flutter/src/models/page_data.dart';
 
 part 'home_page_model.freezed.dart';
@@ -112,7 +111,6 @@ class HomePageState with _$HomePageState {
           pageIcon: "assets/images/react.png")
     ])
     List<PageData> pages,
-    @Default(null) List<Projects>? projects,
     @Default(ProjectStatus.initial) ProjectStatus projectStatus,
     @Default("") String projectErrMsg,
     @Default("") String name,

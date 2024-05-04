@@ -29,12 +29,11 @@ class _ProjectsSectionState extends ConsumerState<ProjectsSection> {
   Widget build(BuildContext context) {
     final projectStatus =
         ref.watch(homePageProvider.select((value) => value.projectStatus));
-    final projects =
-        ref.watch(homePageProvider.select((value) => value.projects));
+    final projects = [];
     final appTheme =
         ref.watch(themeRepositoryProvider.select((value) => value)) ==
             AppTheme.lightVSCode;
-    return projectStatus == ProjectStatus.loaded && projects != null
+    return projectStatus == ProjectStatus.loaded && projects.isNotEmpty
         ? RawScrollbar(
             controller: _scrollController,
             thickness: 10,
