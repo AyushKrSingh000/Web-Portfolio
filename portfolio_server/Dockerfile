@@ -1,6 +1,4 @@
-# If you update the dart version, make sure the image is
-# compatible with the busybox image.
-FROM dart:3.2.5 AS build
+FROM dart:3.0 AS build
 
 WORKDIR /app
 COPY . .
@@ -8,18 +6,20 @@ COPY . .
 RUN dart pub get
 RUN dart compile exe bin/main.dart -o bin/main
 
-# If you update the busybox version, make sure the image is
-# compatible with the dart image.
-FROM busybox:1.36.1-glibc
+FROM busybox:1.34.1
 
 ENV runmode=development
 ENV serverid=default
 ENV logging=normal
 ENV role=monolith
 
-COPY --from=build /runtime/ /runtime/
+COPY --from=build /runtime/etc /etc
+COPY --from=build /runtime/lib /lib
+COPY --from=build /runtime/lib64 /lib64
+COPY --from=build /runtime/usr /usr
 COPY --from=build /app/bin/main /app/bin/main
 COPY --from=build /app/config/ config/
+#COPY --from=build /app/generated/ generated/
 COPY --from=build /app/web/ web/
 
 EXPOSE 8080

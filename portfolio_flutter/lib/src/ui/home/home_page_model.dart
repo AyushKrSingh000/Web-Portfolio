@@ -58,19 +58,19 @@ class HomePageModel extends StateNotifier<HomePageState> {
       return "Please enter message";
     }
     try {
-      await client.contactUs.sendContactdetails(
-        Contacts(
-          contactId: '123',
-          name: state.name,
-          email: state.email,
-          subject: state.subject,
-          content: state.content,
-          contactDate: DateTime.now(),
-        ),
-      );
-      if (mounted) {
-        state = state.copyWith(name: "", email: "", subject: "", content: "");
-      }
+      //   await client.contactUs.sendContactdetails(
+      //     Contacts(
+      //       contactId: '123',
+      //       name: state.name,
+      //       email: state.email,
+      //       subject: state.subject,
+      //       content: state.content,
+      //       contactDate: DateTime.now(),
+      //     ),
+      //   );
+      //   if (mounted) {
+      //     state = state.copyWith(name: "", email: "", subject: "", content: "");
+      //   }
       return "";
     } on Exception catch (e) {
       return e.toString();
@@ -83,11 +83,11 @@ class HomePageModel extends StateNotifier<HomePageState> {
     state =
         state.copyWith(projectStatus: ProjectStatus.loading, projectErrMsg: "");
     try {
-      final res = await client.projects.getProjects();
-      state = state.copyWith(
-          projects: res,
-          projectErrMsg: "",
-          projectStatus: ProjectStatus.loaded);
+      // final res = await client.projects.getProjects();
+      // state = state.copyWith(
+      //     projects: res,
+      //     projectErrMsg: "",
+      //     projectStatus: ProjectStatus.loaded);
       return "";
     } on Exception catch (e) {
       state = state.copyWith(
