@@ -3,15 +3,19 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 import 'package:portfolio_flutter/src/constants/colors.dart';
+
 import 'package:portfolio_flutter/src/utils/color_utils.dart';
+import 'package:portfolio_flutter/src/utils/web_utils.dart';
 
 import '../../../../models/project_data.dart';
 
 class ProjectCard extends ConsumerWidget {
   final ProjectData data;
+  final List<String> links;
   const ProjectCard({
     super.key,
     required this.data,
+    required this.links,
   });
 
   @override
@@ -63,34 +67,37 @@ class ProjectCard extends ConsumerWidget {
                   Wrap(
                     spacing: 10,
                     runSpacing: 5,
-                    children: data.techStacks
-                        .map(
-                          (e) => InkWell(
-                            onTap: () {},
-                            child: Container(
-                              decoration: BoxDecoration(
-                                borderRadius: BorderRadius.circular(10),
-                                border: Border.all(
-                                  color: ColorUtils.getColor(ref, buttonColor),
-                                  width: 0.7,
-                                ),
+                    children: List.from(
+                      List.generate(
+                        data.techStacks.length,
+                        (index) => InkWell(
+                          onTap: () {
+                            openUrl(links[index]);
+                          },
+                          child: Container(
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(10),
+                              border: Border.all(
+                                color: ColorUtils.getColor(ref, buttonColor),
+                                width: 0.7,
                               ),
-                              child: Padding(
-                                padding: const EdgeInsets.symmetric(
-                                    horizontal: 6, vertical: 2),
-                                child: Text(
-                                  e,
-                                  style: GoogleFonts.poppins(
-                                    fontSize: 11,
-                                    fontWeight: FontWeight.w300,
-                                    // color:  Colors.white,
-                                  ),
+                            ),
+                            child: Padding(
+                              padding: const EdgeInsets.symmetric(
+                                  horizontal: 6, vertical: 2),
+                              child: Text(
+                                data.techStacks[index],
+                                style: GoogleFonts.poppins(
+                                  fontSize: 11,
+                                  fontWeight: FontWeight.w300,
+                                  // color:  Colors.white,
                                 ),
                               ),
                             ),
                           ),
-                        )
-                        .toList(),
+                        ),
+                      ).toList(),
+                    ),
                   ),
                   const SizedBox(
                     height: 20,

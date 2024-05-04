@@ -19,6 +19,7 @@ mixin _$HomePageState {
   HomePageStatus get status => throw _privateConstructorUsedError;
   List<PageData> get pages => throw _privateConstructorUsedError;
   ProjectStatus get projectStatus => throw _privateConstructorUsedError;
+  List<ProjectData>? get projects => throw _privateConstructorUsedError;
   String get projectErrMsg => throw _privateConstructorUsedError;
   String get name => throw _privateConstructorUsedError;
   String get email => throw _privateConstructorUsedError;
@@ -41,6 +42,7 @@ abstract class $HomePageStateCopyWith<$Res> {
       {HomePageStatus status,
       List<PageData> pages,
       ProjectStatus projectStatus,
+      List<ProjectData>? projects,
       String projectErrMsg,
       String name,
       String email,
@@ -65,6 +67,7 @@ class _$HomePageStateCopyWithImpl<$Res, $Val extends HomePageState>
     Object? status = null,
     Object? pages = null,
     Object? projectStatus = null,
+    Object? projects = freezed,
     Object? projectErrMsg = null,
     Object? name = null,
     Object? email = null,
@@ -85,6 +88,10 @@ class _$HomePageStateCopyWithImpl<$Res, $Val extends HomePageState>
           ? _value.projectStatus
           : projectStatus // ignore: cast_nullable_to_non_nullable
               as ProjectStatus,
+      projects: freezed == projects
+          ? _value.projects
+          : projects // ignore: cast_nullable_to_non_nullable
+              as List<ProjectData>?,
       projectErrMsg: null == projectErrMsg
           ? _value.projectErrMsg
           : projectErrMsg // ignore: cast_nullable_to_non_nullable
@@ -125,6 +132,7 @@ abstract class _$$HomePageStateImplCopyWith<$Res>
       {HomePageStatus status,
       List<PageData> pages,
       ProjectStatus projectStatus,
+      List<ProjectData>? projects,
       String projectErrMsg,
       String name,
       String email,
@@ -147,6 +155,7 @@ class __$$HomePageStateImplCopyWithImpl<$Res>
     Object? status = null,
     Object? pages = null,
     Object? projectStatus = null,
+    Object? projects = freezed,
     Object? projectErrMsg = null,
     Object? name = null,
     Object? email = null,
@@ -167,6 +176,10 @@ class __$$HomePageStateImplCopyWithImpl<$Res>
           ? _value.projectStatus
           : projectStatus // ignore: cast_nullable_to_non_nullable
               as ProjectStatus,
+      projects: freezed == projects
+          ? _value._projects
+          : projects // ignore: cast_nullable_to_non_nullable
+              as List<ProjectData>?,
       projectErrMsg: null == projectErrMsg
           ? _value.projectErrMsg
           : projectErrMsg // ignore: cast_nullable_to_non_nullable
@@ -207,13 +220,15 @@ class _$HomePageStateImpl implements _HomePageState {
             pageIcon: "assets/images/react.png")
       ],
       this.projectStatus = ProjectStatus.initial,
+      final List<ProjectData>? projects = null,
       this.projectErrMsg = "",
       this.name = "",
       this.email = '',
       this.subject = '',
       this.content = '',
       this.selectedPage = "1"})
-      : _pages = pages;
+      : _pages = pages,
+        _projects = projects;
 
   @override
   @JsonKey()
@@ -230,6 +245,17 @@ class _$HomePageStateImpl implements _HomePageState {
   @override
   @JsonKey()
   final ProjectStatus projectStatus;
+  final List<ProjectData>? _projects;
+  @override
+  @JsonKey()
+  List<ProjectData>? get projects {
+    final value = _projects;
+    if (value == null) return null;
+    if (_projects is EqualUnmodifiableListView) return _projects;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(value);
+  }
+
   @override
   @JsonKey()
   final String projectErrMsg;
@@ -251,7 +277,7 @@ class _$HomePageStateImpl implements _HomePageState {
 
   @override
   String toString() {
-    return 'HomePageState(status: $status, pages: $pages, projectStatus: $projectStatus, projectErrMsg: $projectErrMsg, name: $name, email: $email, subject: $subject, content: $content, selectedPage: $selectedPage)';
+    return 'HomePageState(status: $status, pages: $pages, projectStatus: $projectStatus, projects: $projects, projectErrMsg: $projectErrMsg, name: $name, email: $email, subject: $subject, content: $content, selectedPage: $selectedPage)';
   }
 
   @override
@@ -263,6 +289,7 @@ class _$HomePageStateImpl implements _HomePageState {
             const DeepCollectionEquality().equals(other._pages, _pages) &&
             (identical(other.projectStatus, projectStatus) ||
                 other.projectStatus == projectStatus) &&
+            const DeepCollectionEquality().equals(other._projects, _projects) &&
             (identical(other.projectErrMsg, projectErrMsg) ||
                 other.projectErrMsg == projectErrMsg) &&
             (identical(other.name, name) || other.name == name) &&
@@ -279,6 +306,7 @@ class _$HomePageStateImpl implements _HomePageState {
       status,
       const DeepCollectionEquality().hash(_pages),
       projectStatus,
+      const DeepCollectionEquality().hash(_projects),
       projectErrMsg,
       name,
       email,
@@ -298,6 +326,7 @@ abstract class _HomePageState implements HomePageState {
       {final HomePageStatus status,
       final List<PageData> pages,
       final ProjectStatus projectStatus,
+      final List<ProjectData>? projects,
       final String projectErrMsg,
       final String name,
       final String email,
@@ -311,6 +340,8 @@ abstract class _HomePageState implements HomePageState {
   List<PageData> get pages;
   @override
   ProjectStatus get projectStatus;
+  @override
+  List<ProjectData>? get projects;
   @override
   String get projectErrMsg;
   @override

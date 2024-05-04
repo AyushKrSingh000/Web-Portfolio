@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:portfolio_flutter/src/constants/colors.dart';
-import 'package:portfolio_flutter/src/constants/strings.dart';
+
 import 'package:portfolio_flutter/src/ui/home/home_page_model.dart';
 import 'package:portfolio_flutter/src/ui/widgets/custom_button.dart';
 import 'package:portfolio_flutter/src/ui/widgets/custom_text_field.dart';
@@ -10,6 +10,7 @@ import 'package:portfolio_flutter/src/utils/color_utils.dart';
 import 'package:portfolio_flutter/src/utils/toast_utils.dart';
 import 'package:portfolio_flutter/src/utils/web_utils.dart';
 
+import '../../../constants/constants.dart';
 import '../../../constants/enums.dart';
 import '../../../logic/repositories/theme_repository.dart';
 
@@ -41,7 +42,7 @@ class _ContactSectionState extends ConsumerState<ContactSection> {
                 ),
               ),
               const Expanded(
-                child: ContactUsForm(),
+                child: SingleChildScrollView(child: ContactUsForm()),
               )
             ],
           )

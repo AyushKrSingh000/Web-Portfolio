@@ -142,20 +142,20 @@ class _ExplorerSectionState extends ConsumerState<ExplorerSection> {
               const SizedBox(
                 height: 8,
               ),
-              FileNameSection(
-                  onTap: () {
-                    ref.read(homePageProvider.notifier).addPage(const PageData(
-                          pageId: "5",
-                          pageName: "articles.json",
-                          pageIcon: 'assets/images/json.png',
-                        ));
-                    canPop(context);
-                  },
-                  fileName: 'articles.json',
-                  image: "assets/images/json.png"),
-              const SizedBox(
-                height: 8,
-              ),
+              // FileNameSection(
+              //     onTap: () {
+              //       ref.read(homePageProvider.notifier).addPage(const PageData(
+              //             pageId: "5",
+              //             pageName: "articles.json",
+              //             pageIcon: 'assets/images/json.png',
+              //           ));
+              //       canPop(context);
+              //     },
+              //     fileName: 'articles.json',
+              //     image: "assets/images/json.png"),
+              // const SizedBox(
+              //   height: 8,
+              // ),
               FileNameSection(
                   onTap: () {
                     ref.read(homePageProvider.notifier).addPage(const PageData(

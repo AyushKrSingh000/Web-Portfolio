@@ -2,8 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import 'package:google_fonts/google_fonts.dart';
+import 'package:portfolio_flutter/src/constants/constants.dart';
 import 'package:portfolio_flutter/src/ui/widgets/circle_widget.dart';
 import 'package:portfolio_flutter/src/ui/widgets/custom_button.dart';
+import 'package:portfolio_flutter/src/utils/web_utils.dart';
 
 import '../../../constants/enums.dart';
 import '../../../logic/repositories/theme_repository.dart';
@@ -158,7 +160,9 @@ class _HomeSectionState extends ConsumerState<HomeSection> {
                   CustomButton(
                     secondDesgin: true,
                     text: 'Resume',
-                    onTap: () {},
+                    onTap: () {
+                      openUrl(resumeLink);
+                    },
                     isProcessing: false,
                   ),
                 ],

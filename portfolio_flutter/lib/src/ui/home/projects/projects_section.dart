@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:portfolio_flutter/src/constants/constants.dart';
 
 import '../../../constants/enums.dart';
 import '../../../logic/repositories/theme_repository.dart';
@@ -29,11 +30,12 @@ class _ProjectsSectionState extends ConsumerState<ProjectsSection> {
   Widget build(BuildContext context) {
     final projectStatus =
         ref.watch(homePageProvider.select((value) => value.projectStatus));
-    final projects = [];
+    final projects =
+        ref.watch(homePageProvider.select((value) => value.projects));
     final appTheme =
         ref.watch(themeRepositoryProvider.select((value) => value)) ==
             AppTheme.lightVSCode;
-    return projectStatus == ProjectStatus.loaded && projects.isNotEmpty
+    return projectStatus == ProjectStatus.loaded && projects != null
         ? RawScrollbar(
             controller: _scrollController,
             thickness: 10,
@@ -48,8 +50,14 @@ class _ProjectsSectionState extends ConsumerState<ProjectsSection> {
                       spacing: 30,
                       runSpacing: 30,
                       crossAxisAlignment: WrapCrossAlignment.center,
-                      children:
-                          projects.map((e) => ProjectCard(data: e)).toList()),
+                      children: projects
+                          .map(
+                            (e) => ProjectCard(
+                              data: e,
+                              links: techLinks[e.projectName] ?? [],
+                            ),
+                          )
+                          .toList()),
                 ),
               ),
             ),

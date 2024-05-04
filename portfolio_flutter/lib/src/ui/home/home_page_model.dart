@@ -1,7 +1,10 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:portfolio_flutter/src/constants/constants.dart';
 
 import 'package:portfolio_flutter/src/models/page_data.dart';
+
+import '../../models/project_data.dart';
 
 part 'home_page_model.freezed.dart';
 
@@ -57,19 +60,6 @@ class HomePageModel extends StateNotifier<HomePageState> {
       return "Please enter message";
     }
     try {
-      //   await client.contactUs.sendContactdetails(
-      //     Contacts(
-      //       contactId: '123',
-      //       name: state.name,
-      //       email: state.email,
-      //       subject: state.subject,
-      //       content: state.content,
-      //       contactDate: DateTime.now(),
-      //     ),
-      //   );
-      //   if (mounted) {
-      //     state = state.copyWith(name: "", email: "", subject: "", content: "");
-      //   }
       return "";
     } on Exception catch (e) {
       return e.toString();
@@ -82,11 +72,11 @@ class HomePageModel extends StateNotifier<HomePageState> {
     state =
         state.copyWith(projectStatus: ProjectStatus.loading, projectErrMsg: "");
     try {
-      // final res = await client.projects.getProjects();
-      // state = state.copyWith(
-      //     projects: res,
-      //     projectErrMsg: "",
-      //     projectStatus: ProjectStatus.loaded);
+      state = state.copyWith(
+        projects: projects,
+        projectErrMsg: "",
+        projectStatus: ProjectStatus.loaded,
+      );
       return "";
     } on Exception catch (e) {
       state = state.copyWith(
@@ -112,6 +102,7 @@ class HomePageState with _$HomePageState {
     ])
     List<PageData> pages,
     @Default(ProjectStatus.initial) ProjectStatus projectStatus,
+    @Default(null) List<ProjectData>? projects,
     @Default("") String projectErrMsg,
     @Default("") String name,
     @Default('') String email,
