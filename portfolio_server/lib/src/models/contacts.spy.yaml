@@ -1,9 +1,0 @@
-class: Contacts
-table: contacts
-fields:
-  contactId: String
-  name: String
-  email: String
-  subject: String
-  content: String
-  contactDate: DateTime

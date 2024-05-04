@@ -1,7 +1,0 @@
-contactUs:
-  - sendContactdetails:
-projects:
-  - getProjects:
-  - addProjects:
-  - deleteProject:
-  - deleteAllProjects:
