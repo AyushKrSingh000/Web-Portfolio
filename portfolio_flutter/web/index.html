@@ -15,7 +15,7 @@
     This is a placeholder for base href that will be replaced by the value of
     the `--base-href` argument provided to `flutter build`.
   -->
-  <base href="$FLUTTER_BASE_HREF">
+  <base href="/">
 
   <meta charset="UTF-8">
   <meta content="IE=Edge" http-equiv="X-UA-Compatible">
@@ -31,33 +31,113 @@
   <!-- Favicon -->
   <link rel="icon" type="image/png" href="favicon.png" />
 
-  <title>portfolio_flutter</title>
+  <title>Ayush Kumar Singh</title>
   <link rel="manifest" href="manifest.json">
 
   <script>
     // The value below is injected by flutter build, do not touch.
-    const serviceWorkerVersion = null;
+    const serviceWorkerVersion = "1845869454";
   </script>
   <!-- This script adds the flutter initialization JS code -->
   <script src="flutter.js" defer></script>
 </head>
 
 <body>
-  <script>
-    window.addEventListener('load', function (ev) {
-      // Download main.dart.js
-      _flutter.loader.loadEntrypoint({
-        serviceWorker: {
-          serviceWorkerVersion: serviceWorkerVersion,
-        },
-        onEntrypointLoaded: function (engineInitializer) {
-          engineInitializer.initializeEngine().then(function (appRunner) {
-            appRunner.runApp();
-          });
+  <script defer="" src="main.dart.js" type="application/javascript">
+    jQuery(document).ready(function () {
+      //Preloader
+      jQuery(window).on("load", function () {
+        preloaderFadeOutTime = 500;
+        function hidePreloader() {
+          var wrapper = jQuery('.spinner-wrapper');
+          var spinner = jQuery('.spinner');
+          wrapper.fadeOut(preloaderFadeOutTime);
+          spinner.fadeOut(preloaderFadeOutTime);
         }
+        hidePreloader();
       });
     });
+
   </script>
-</body>
+  </script>
+  <style>
+    .spinner {
+      width: 40px;
+      height: 40px;
+      position: absolute;
+      top: 48%;
+      left: 48%;
+    }
+
+    .double-bounce1,
+    .double-bounce2 {
+      width: 100%;
+      height: 100%;
+      border-radius: 50%;
+      background-color: #333;
+      opacity: 0.6;
+      position: absolute;
+      top: 0;
+      left: 0;
+
+      -webkit-animation: sk-bounce 2.0s infinite ease-in-out;
+      animation: sk-bounce 2.0s infinite ease-in-out;
+    }
+
+    .double-bounce2 {
+      -webkit-animation-delay: -1.0s;
+      animation-delay: -1.0s;
+    }
+
+    @-webkit-keyframes sk-bounce {
+
+      0%,
+      100% {
+        -webkit-transform: scale(0.0)
+      }
+
+      50% {
+        -webkit-transform: scale(1.0)
+      }
+    }
+
+    @keyframes sk-bounce {
+
+      0%,
+      100% {
+        transform: scale(0.0);
+        -webkit-transform: scale(0.0);
+      }
+
+      50% {
+        transform: scale(1.0);
+        -webkit-transform: scale(1.0);
+      }
+    }
+  </style>
+  <script src="flutter.js" defer></script>
+  </head>
+
+  <body>
+    <div class="spinner">
+      <div class="double-bounce1"></div>
+      <div class="double-bounce2"></div>
+    </div>
+    <script>
+      window.addEventListener('load', function (ev) {
+        // Download main.dart.js
+        _flutter.loader.loadEntrypoint({
+          serviceWorker: {
+            serviceWorkerVersion: serviceWorkerVersion,
+          },
+          onEntrypointLoaded: function (engineInitializer) {
+            engineInitializer.initializeEngine().then(function (appRunner) {
+              appRunner.runApp();
+            });
+          }
+        });
+      });
+    </script>
+  </body>
 
 </html>

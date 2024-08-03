@@ -35,7 +35,7 @@ class _MyAppState extends ConsumerState<MyApp> {
       theme: appTheme == AppTheme.lightVSCode
           ? ThemeData.light()
           : ThemeData.dark(),
-      title: 'Potfolio Web App',
+      title: 'Ayush Kumar Singh',
       routerConfig: _appRouter.config(),
     );
   }

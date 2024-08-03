@@ -146,7 +146,7 @@ List<ProjectData> projects = [
       'RiverPod',
       'Firebase',
     ],
-    sourceCode: 'https://github.com/AyushKrSingh000/Portfolio-Web-App',
+    sourceCode: 'https://github.com/AyushKrSingh000/Web-Portfolio',
     liveDemo: 'https://oyus.me/',
   ),
   ProjectData(
