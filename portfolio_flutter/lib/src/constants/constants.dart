@@ -144,6 +144,7 @@ List<ProjectData> projects = [
     techStacks: [
       'Flutter',
       'RiverPod',
+      'Firebase',
     ],
     sourceCode: 'https://github.com/AyushKrSingh000/Portfolio-Web-App',
     liveDemo: 'https://oyus.me/',
