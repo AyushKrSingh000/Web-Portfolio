@@ -75,14 +75,6 @@ class _ThemeCard extends ConsumerWidget {
       width: 260,
       child: Column(
         children: [
-          Container(
-            height: 120,
-            decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(3),
-              color: ColorUtils.getColor(ref, projectBgColor).withBlue(10),
-            ),
-          ),
-          const SizedBox(height: 10),
           Text(
             theme.name,
             style: GoogleFonts.poppins(

@@ -307,7 +307,7 @@ class _ContactUsFormState extends ConsumerState<ContactUsForm> {
                   }
                 }
               },
-              isProcessing: false),
+              isProcessing: isProcessing),
         ],
       ),
     );

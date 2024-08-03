@@ -60,10 +60,15 @@ class _MainTopBarState extends ConsumerState<MainTopBar> {
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
-                            Image.asset(
-                              e.pageIcon,
-                              width: 14,
-                            ),
+                            e.pageIcon == 'setting'
+                                ? const Icon(
+                                    Icons.settings,
+                                    color: Colors.grey,
+                                  )
+                                : Image.asset(
+                                    e.pageIcon,
+                                    width: 14,
+                                  ),
                             const SizedBox(
                               width: 10,
                             ),

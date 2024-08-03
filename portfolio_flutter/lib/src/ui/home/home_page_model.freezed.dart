@@ -216,8 +216,8 @@ class _$HomePageStateImpl implements _HomePageState {
       final List<PageData> pages = const [
         PageData(
             pageId: "1",
-            pageName: 'home.jsx',
-            pageIcon: "assets/images/react.png")
+            pageName: 'home.html',
+            pageIcon: "assets/images/html.png")
       ],
       this.projectStatus = ProjectStatus.initial,
       final List<ProjectData>? projects = null,

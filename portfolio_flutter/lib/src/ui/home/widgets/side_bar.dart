@@ -49,8 +49,8 @@ class _CustomSideBarState extends ConsumerState<CustomSideBar> {
               } else {
                 ref.read(homePageProvider.notifier).addPage(const PageData(
                       pageId: "1",
-                      pageName: "home.jsx",
-                      pageIcon: 'assets/images/react.png',
+                      pageName: "home.html",
+                      pageIcon: 'assets/images/html.png',
                     ));
               }
             },
@@ -69,20 +69,22 @@ class _CustomSideBarState extends ConsumerState<CustomSideBar> {
           //     showSuccessMessage("Coming Soon!");
           //   },
           // ),
-          SideBarIcon(
-            data: FontAwesomeIcons.pencilAlt,
-            isActive: false,
-            onTap: () async {},
-          ),
+          // SideBarIcon(
+          //   data: FontAwesomeIcons.pencilAlt,
+          //   isActive: false,
+          //   onTap: () async {},
+          // ),
           SideBarIcon(
             data: FontAwesomeIcons.envelope,
             isActive: selectedId == "3",
             onTap: () {
-              ref.read(homePageProvider.notifier).addPage(const PageData(
-                    pageId: "3",
-                    pageName: "contact.css",
-                    pageIcon: 'assets/images/css.png',
-                  ));
+              ref.read(homePageProvider.notifier).addPage(
+                    const PageData(
+                      pageId: "3",
+                      pageName: "contact.css",
+                      pageIcon: 'assets/images/css.png',
+                    ),
+                  );
             },
           ),
           const Expanded(child: SizedBox()),
@@ -93,18 +95,21 @@ class _CustomSideBarState extends ConsumerState<CustomSideBar> {
               onTap: () {
                 ref.read(homePageProvider.notifier).addPage(const PageData(
                     pageId: "1",
-                    pageName: "home.jsx",
-                    pageIcon: 'assets/images/react.png'));
+                    pageName: "home.html",
+                    pageIcon: 'assets/images/html.png'));
               }),
           SideBarIcon(
               data: Icons.settings_outlined,
               isActive: false,
               iconSize: 32,
               onTap: () {
-                ref.read(homePageProvider.notifier).addPage(const PageData(
-                    pageId: "7",
-                    pageName: "App Theme",
-                    pageIcon: 'assets/images/vscode.png'));
+                ref.read(homePageProvider.notifier).addPage(
+                      const PageData(
+                        pageId: "7",
+                        pageName: "App Theme",
+                        pageIcon: 'setting',
+                      ),
+                    );
               }),
         ],
       ),

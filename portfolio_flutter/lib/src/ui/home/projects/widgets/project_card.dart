@@ -37,6 +37,13 @@ class ProjectCard extends ConsumerWidget {
                 color: Colors.white.withOpacity(0.3),
                 borderRadius: BorderRadius.circular(15),
               ),
+              child: data.imageUrl.trim().isNotEmpty
+                  ? Image.asset(
+                      data.imageUrl,
+                      alignment: Alignment.topCenter,
+                      fit: BoxFit.cover,
+                    )
+                  : null,
             ),
             Padding(
               padding: const EdgeInsets.all(15.0),
@@ -107,32 +114,36 @@ class ProjectCard extends ConsumerWidget {
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        InkWell(
-                          hoverColor: Colors.white.withOpacity(0.3),
-                          onTap: () {},
-                          child: Text(
-                            "Source Code",
-                            style: GoogleFonts.poppins(
-                              fontSize: 13,
-                              fontWeight: FontWeight.w300,
-                              decoration: TextDecoration.underline,
-                              // color: Colors.white,
+                        if (data.sourceCode.trim().isNotEmpty)
+                          InkWell(
+                            hoverColor: Colors.white.withOpacity(0.3),
+                            onTap: () {
+                              openUrl(data.sourceCode);
+                            },
+                            child: Text(
+                              "Source Code",
+                              style: GoogleFonts.poppins(
+                                fontSize: 13,
+                                fontWeight: FontWeight.w300,
+                                decoration: TextDecoration.underline,
+                                // color: Colors.white,
+                              ),
                             ),
                           ),
-                        ),
-                        InkWell(
-                          hoverColor: Colors.white.withOpacity(0.3),
-                          onTap: () {},
-                          child: Text(
-                            "Live Demo",
-                            style: GoogleFonts.poppins(
-                              fontSize: 13,
-                              fontWeight: FontWeight.w300,
-                              decoration: TextDecoration.underline,
-                              // color: Colors.white,
+                        if (data.liveDemo.trim().isNotEmpty)
+                          InkWell(
+                            hoverColor: Colors.white.withOpacity(0.3),
+                            onTap: () {},
+                            child: Text(
+                              "Live Demo",
+                              style: GoogleFonts.poppins(
+                                fontSize: 13,
+                                fontWeight: FontWeight.w300,
+                                decoration: TextDecoration.underline,
+                                // color: Colors.white,
+                              ),
                             ),
                           ),
-                        ),
                       ],
                     ),
                   )

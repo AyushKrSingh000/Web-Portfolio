@@ -40,7 +40,7 @@ class _CustomTabBarState extends ConsumerState<CustomTabBar> {
           Padding(
             padding: const EdgeInsets.fromLTRB(5, 6, 10, 6),
             child: Image.asset(
-              'assets/images/vscode.png',
+              'assets/images/ayush.png',
               height: 40,
               // width: 40,
             ),

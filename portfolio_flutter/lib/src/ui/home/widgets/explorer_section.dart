@@ -92,28 +92,28 @@ class _ExplorerSectionState extends ConsumerState<ExplorerSection> {
                   onTap: () {
                     ref.read(homePageProvider.notifier).addPage(const PageData(
                         pageId: "1",
-                        pageName: "home.jsx",
-                        pageIcon: 'assets/images/react.png'));
-                    canPop(context);
-                  },
-                  fileName: 'home.jsx',
-                  image: "assets/images/react.png"),
-              const SizedBox(
-                height: 8,
-              ),
-              FileNameSection(
-                  onTap: () {
-                    ref.read(homePageProvider.notifier).addPage(const PageData(
-                        pageId: "2",
-                        pageName: "about.html",
+                        pageName: "home.html",
                         pageIcon: 'assets/images/html.png'));
                     canPop(context);
                   },
-                  fileName: 'about.html',
+                  fileName: 'home.html',
                   image: "assets/images/html.png"),
               const SizedBox(
                 height: 8,
               ),
+              // FileNameSection(
+              //     onTap: () {
+              //       ref.read(homePageProvider.notifier).addPage(const PageData(
+              //           pageId: "2",
+              //           pageName: "about.html",
+              //           pageIcon: 'assets/images/html.png'));
+              //       canPop(context);
+              //     },
+              //     fileName: 'about.html',
+              //     image: "assets/images/html.png"),
+              // const SizedBox(
+              //   height: 8,
+              // ),
               FileNameSection(
                   onTap: () {
                     ref.read(homePageProvider.notifier).addPage(const PageData(
@@ -157,16 +157,17 @@ class _ExplorerSectionState extends ConsumerState<ExplorerSection> {
               //   height: 8,
               // ),
               FileNameSection(
-                  onTap: () {
-                    ref.read(homePageProvider.notifier).addPage(const PageData(
-                          pageId: "6",
-                          pageName: "github.md",
-                          pageIcon: 'assets/images/markdown.png',
-                        ));
-                    canPop(context);
-                  },
-                  fileName: 'github.md',
-                  image: "assets/images/markdown.png")
+                onTap: () {
+                  ref.read(homePageProvider.notifier).addPage(const PageData(
+                        pageId: "6",
+                        pageName: "github.md",
+                        pageIcon: 'assets/images/markdown.png',
+                      ));
+                  canPop(context);
+                },
+                fileName: 'github.md',
+                image: "assets/images/markdown.png",
+              )
             ],
           ],
         ),
