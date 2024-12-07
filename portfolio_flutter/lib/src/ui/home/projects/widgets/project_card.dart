@@ -3,6 +3,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 import 'package:portfolio_flutter/src/constants/colors.dart';
+import 'package:portfolio_flutter/src/constants/constants.dart';
 
 import 'package:portfolio_flutter/src/utils/color_utils.dart';
 import 'package:portfolio_flutter/src/utils/web_utils.dart';
@@ -11,11 +12,11 @@ import '../../../../models/project_data.dart';
 
 class ProjectCard extends ConsumerWidget {
   final ProjectData data;
-  final List<String> links;
+  // final List<String> links;
   const ProjectCard({
     super.key,
     required this.data,
-    required this.links,
+    // required this.links,
   });
 
   @override
@@ -79,7 +80,11 @@ class ProjectCard extends ConsumerWidget {
                         data.techStacks.length,
                         (index) => InkWell(
                           onTap: () {
-                            openUrl(links[index]);
+                            final url =
+                                techLinks[data.techStacks[index].toLowerCase()];
+                            if (url != null && url.isNotEmpty) {
+                              openUrl(url);
+                            }
                           },
                           child: Container(
                             decoration: BoxDecoration(
@@ -133,7 +138,9 @@ class ProjectCard extends ConsumerWidget {
                         if (data.liveDemo.trim().isNotEmpty)
                           InkWell(
                             hoverColor: Colors.white.withOpacity(0.3),
-                            onTap: () {},
+                            onTap: () {
+                              openUrl(data.liveDemo);
+                            },
                             child: Text(
                               "Live Demo",
                               style: GoogleFonts.poppins(

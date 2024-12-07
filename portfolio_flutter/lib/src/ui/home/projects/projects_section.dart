@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:portfolio_flutter/src/constants/constants.dart';
 
 import '../../../constants/enums.dart';
 import '../../../logic/repositories/theme_repository.dart';
@@ -54,7 +53,6 @@ class _ProjectsSectionState extends ConsumerState<ProjectsSection> {
                           .map(
                             (e) => ProjectCard(
                               data: e,
-                              links: techLinks[e.projectName] ?? [],
                             ),
                           )
                           .toList()),

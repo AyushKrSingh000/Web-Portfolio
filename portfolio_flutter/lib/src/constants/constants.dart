@@ -39,7 +39,7 @@ List<Map<int, String>> webOptions = [
 
 const double fontsize = 16;
 const String resumeLink =
-    "https://drive.google.com/file/d/1SFYqhGCLLs8ZZWS43ARmsBZzB19g_w_3/view";
+    "https://drive.google.com/file/d/10urgZCIEAzo0BUSUYaX4vbkW9MEWAtQj/view";
 List<String> skills = [
   'Flutter',
   'Firebase',
@@ -87,8 +87,7 @@ List<ProjectData> projects = [
       'RiverPod',
     ],
     sourceCode: '',
-    liveDemo:
-        'https://play.google.com/store/apps/details?id=com.saturnalia.saturnalia_app',
+    liveDemo: 'https://support-urja.netlify.app/',
   ),
   ProjectData(
     projectName: 'Saarthi Camps',
@@ -96,12 +95,12 @@ List<ProjectData> projects = [
         'Amid Wars, Political tussles war, the influence of Nonstate Actors, etc., Refugees are the one who suffers the most. They need help with proper Healthcare and consultations with Doctors due to the ...',
     imageUrl: 'assets/project_images/saarthi.png',
     techStacks: [
-      'Flutter',
+      'ReactJs',
       'ExpressJS',
       'NodeJS',
       'MongoDB',
       'JavaScript',
-      'RiverPod'
+      'NextJs'
     ],
     sourceCode: 'https://github.com/AyushKrSingh000/Saarthi-Camps',
     liveDemo: '',
@@ -117,8 +116,8 @@ List<ProjectData> projects = [
       'Getx',
       'Firebase',
     ],
-    sourceCode: 'https://github.com/AyushKrSingh000/pgrkam',
-    liveDemo: '',
+    sourceCode: 'https://github.com/Vriddhi-SIH/SIH',
+    liveDemo: 'https://www.youtube.com/watch?v=AQwECgLhzVE',
   ),
   ProjectData(
     projectName: 'Pgrkam',
@@ -167,48 +166,36 @@ List<ProjectData> projects = [
       liveDemo: ''),
 ];
 
-List<String> image = [
-  'docs2.png',
-  'vriddhi2.png',
-  'expense2.png',
-  'event2.png'
-];
+Map<String, String> techLinks = {
+  'flutter': flutter,
+  'firebase': firebase,
+  'nodejs': nodejs,
+  'mongodb': mongodb,
+  'javascript': javascript,
+  'socketio': socketio,
+  'riverpod': riverpod,
+  'getx': getx,
+  'django': django,
+  'webdevtools': webdevtools,
+  'expressjs': expressjs,
+  'mysql': mysql,
+  'c': c,
+  'cpp': cpp,
+  'python': python,
+  'git': git,
+  'github': github,
+  'vscode': vscode,
+  'reactjs': reactjs,
+  'nextjs': nextjs,
+};
 
-Map<int, List<String>> tech = {
-  0: [
-    'Flutter',
-    'ExpressJS',
-    'NodeJS',
-    'MongoDB',
-    'JavaScript',
-    'SocketIO',
-    'RiverPod'
-  ],
-  1: ['Flutter', 'Firebase', 'GETX', 'DJango', 'WebDevTools'],
-  2: ['Flutter', 'Firebase', 'GETX', 'WebDevTools'],
-  3: ['Flutter', 'ExpressJS', 'NodeJS', 'MongoDB', 'JavaScript']
-};
-Map<String, List<String>> techLinks = {
-  'Google Docs Clone': [
-    flutter,
-    expressjs,
-    nodejs,
-    mongodb,
-    javascript,
-    socketio,
-    riverpodw
-  ],
-  '1': [flutter, firebase, getx, django, webdevtools],
-  '2': [flutter, firebase, getx, webdevtools],
-  '3': [flutter, expressjs, nodejs, mongodb, javascript]
-};
 const String flutter = 'https://flutter.dev/';
 const String firebase = 'https://firebase.google.com/';
 const String nodejs = 'https://nodejs.org/en/';
 const String mongodb = 'https://www.mongodb.com/home';
 const String javascript = 'https://www.w3schools.com/js/';
 const String socketio = 'https://socket.io/';
-const String riverpodw = 'https://riverpod.dev/';
+const String riverpod = 'https://riverpod.dev/';
 const String getx = 'https://pub.dev/packages/get'; //
 const String django = 'https://www.djangoproject.com/'; //
 const String webdevtools = 'https://www.w3schools.com/whatis/'; //
@@ -220,3 +207,6 @@ const String python = 'https://www.python.org/';
 const String git = 'https://git-scm.com/';
 const String github = 'https://github.com/';
 const String vscode = 'https://code.visualstudio.com/';
+
+const String reactjs = "https://react.dev/";
+const String nextjs = "https://nextjs.org/";
